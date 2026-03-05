@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Конкурентный анализ рынка маркетинговой аналитики и бизнес-аудитов в России | BSR</title>
+<style>
+:root {
+  --bg: #0D0B0E;
+  --card: #1A1620;
+  --card-hover: #221D2A;
+  --gold: #C9A44C;
+  --green: #3DB86A;
+  --red: #D44040;
+  --blue: #4A8FE0;
+  --purple: #8B5CF6;
+  --orange: #E8913A;
+  --text: #E8E4ED;
+  --text-muted: #9B95A3;
+  --border: #2D2735;
+  --gradient-gold: linear-gradient(135deg, #C9A44C, #E8C76A);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* Header */
+.hero {
+  background: linear-gradient(135deg, #1A1620 0%, #0D0B0E 50%, #1A1225 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 60px 0 40px;
+  text-align: center;
+}
+.hero h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 12px;
+}
+.hero .subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 700px;
+  margin: 0 auto 20px;
+}
+.hero .meta {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.hero .meta span { display: flex; align-items: center; gap: 6px; }
+
+/* Navigation */
+.nav-bar {
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+}
+.nav-bar .container {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex-wrap: wrap;
+}
+.nav-bar a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.8rem;
+  padding: 6px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+.nav-bar a:hover { background: var(--card-hover); color: var(--gold); }
+
+/* Sections */
+section { padding: 48px 0; border-bottom: 1px solid var(--border); }
+section:last-child { border-bottom: none; }
+
+h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--gold);
+}
+h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 24px 0 12px;
+  color: var(--text);
+}
+h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 16px 0 8px;
+  color: var(--text-muted);
+}
+.section-desc {
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+}
+
+/* Cards */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 16px;
+  transition: border-color 0.2s;
+}
+.card:hover { border-color: var(--gold); }
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+.stat-card .value {
+  font-size: 2rem;
+  font-weight: 700;
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.stat-card .label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+.stat-card .sublabel {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+  opacity: 0.7;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 0.88rem;
+}
+th {
+  background: var(--card);
+  color: var(--gold);
+  font-weight: 600;
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 2px solid var(--border);
+  position: sticky;
+  top: 50px;
+}
+td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+tr:hover td { background: rgba(201, 164, 76, 0.05); }
+.table-wrapper { overflow-x: auto; border-radius: 12px; border: 1px solid var(--border); }
+
+/* Tags */
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin: 2px;
+}
+.tag-premium { background: rgba(201,164,76,0.2); color: var(--gold); }
+.tag-medium { background: rgba(74,143,224,0.2); color: var(--blue); }
+.tag-budget { background: rgba(61,184,106,0.2); color: var(--green); }
+.tag-large { background: rgba(139,92,246,0.2); color: var(--purple); }
+.tag-mid { background: rgba(232,145,58,0.2); color: var(--orange); }
+.tag-small { background: rgba(212,64,64,0.2); color: var(--red); }
+
+/* SWOT */
+.swot-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 24px 0;
+}
+.swot-card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid var(--border);
+}
+.swot-card h4 {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+}
+.swot-card.strength { border-left: 4px solid var(--green); }
+.swot-card.weakness { border-left: 4px solid var(--red); }
+.swot-card.opportunity { border-left: 4px solid var(--blue); }
+.swot-card.threat { border-left: 4px solid var(--orange); }
+.swot-card ul { list-style: none; padding: 0; }
+.swot-card li {
+  padding: 6px 0;
+  padding-left: 20px;
+  position: relative;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+.swot-card li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.swot-card.strength li::before { background: var(--green); }
+.swot-card.weakness li::before { background: var(--red); }
+.swot-card.opportunity li::before { background: var(--blue); }
+.swot-card.threat li::before { background: var(--orange); }
+
+/* Calc trace */
+.calc-trace {
+  background: rgba(74,143,224,0.08);
+  border: 1px solid rgba(74,143,224,0.2);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 8px 0;
+  font-size: 0.85rem;
+}
+.calc-trace strong { color: var(--blue); }
+.calc-trace .source { color: var(--text-muted); font-size: 0.8rem; }
+
+/* Confidence badges */
+.badge-fact { color: var(--green); font-weight: 600; }
+.badge-calc { color: var(--blue); font-weight: 600; }
+.badge-estimate { color: var(--orange); font-weight: 600; }
+
+/* Board */
+.board-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.board-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+}
+.board-card .role {
+  font-size: 0.85rem;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.board-card .score {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.board-card .comment {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Perceptual map */
+.perceptual-map {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 24px 0;
+  text-align: center;
+}
+
+/* Roadmap */
+.roadmap {
+  margin: 24px 0;
+}
+.roadmap-item {
+  display: flex;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+}
+.roadmap-item:last-child { border-bottom: none; }
+.roadmap-num {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  background: var(--gradient-gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: var(--bg);
+  font-size: 1.1rem;
+}
+.roadmap-content h4 { margin-top: 0; color: var(--text); }
+.roadmap-content p { color: var(--text-muted); font-size: 0.9rem; }
+
+/* Glossary */
+.glossary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 12px;
+}
+.glossary-item {
+  padding: 12px 16px;
+  background: var(--card);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.glossary-item dt {
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.glossary-item dd {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 1.6rem; }
+  .swot-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  table { font-size: 0.8rem; }
+  th, td { padding: 8px 10px; }
+}
+
+/* Print */
+@media print {
+  body { background: white; color: black; }
+  .nav-bar { display: none; }
+  .card, .stat-card, .swot-card, .board-card { border: 1px solid #ddd; }
+}
+
+/* Quote cards */
+.quote-card {
+  background: var(--card);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px;
+  margin: 12px 0;
+}
+.quote-card .text { font-style: italic; color: var(--text); font-size: 0.95rem; }
+.quote-card .author { color: var(--gold); font-size: 0.85rem; margin-top: 8px; font-weight: 600; }
+.quote-card .source-info { color: var(--text-muted); font-size: 0.8rem; }
+
+/* Two col layout */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+@media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } }
+
+/* Heatmap */
+.heatmap-cell-yes { background: rgba(61,184,106,0.3); color: var(--green); text-align: center; font-weight: 600; }
+.heatmap-cell-no { background: rgba(212,64,64,0.15); color: var(--red); text-align: center; }
+.heatmap-cell-partial { background: rgba(232,145,58,0.2); color: var(--orange); text-align: center; }
+.heatmap-cell-na { color: var(--text-muted); text-align: center; opacity: 0.5; }
+
+/* Footer */
+footer {
+  padding: 40px 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--border);
+}
+footer a { color: var(--gold); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <h1>Конкурентный анализ рынка маркетинговой аналитики и бизнес-аудитов в России</h1>
+    <p class="subtitle">62 компании. 6 категорий. Полный разбор: продукт, технологии, маркетинг, финансы, HR, стратегия. Позиционирование BSR.</p>
+    <div class="meta">
+      <span>Дата: 5 марта 2026</span>
+      <span>Компаний: 62</span>
+      <span>Источников: 80+</span>
+      <span>Агентов: 6 параллельных</span>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav class="nav-bar">
+  <div class="container">
+    <a href="#summary">Саммари</a>
+    <a href="#market">Рынок</a>
+    <a href="#competitors">62 компании</a>
+    <a href="#categories">Категории</a>
+    <a href="#product">Продукт</a>
+    <a href="#tech">Технологии</a>
+    <a href="#finance">Финансы</a>
+    <a href="#marketing">Маркетинг</a>
+    <a href="#hr">HR</a>
+    <a href="#swot">SWOT BSR</a>
+    <a href="#map">Перцептуальная карта</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#board">Совет директоров</a>
+    <a href="#glossary">Глоссарий</a>
+    <a href="#methodology">Методология</a>
+  </div>
+</nav>
+
+<main class="container">
+
+<!-- I. EXECUTIVE SUMMARY -->
+<section id="summary">
+  <h2>I. Executive Summary</h2>
+  <p class="section-desc">Ключевые выводы исследования в одном блоке</p>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="value">62</div>
+      <div class="label">компании на рынке</div>
+      <div class="sublabel">в 6 категориях</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">~220</div>
+      <div class="label">млрд руб. TAM</div>
+      <div class="sublabel">исследования + аудит + консалтинг</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">11-17</div>
+      <div class="label">млрд руб. SAM для BSR</div>
+      <div class="sublabel">кабинетные + экспресс + BI</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">~0</div>
+      <div class="label">близких аналогов BSR</div>
+      <div class="sublabel">полный AI-аудит 360 (AI.Инсайт — частичный)</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">+15%</div>
+      <div class="label">рост рынка г/г</div>
+      <div class="sublabel">консалтинг 2024</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">100x</div>
+      <div class="label">разница в цене</div>
+      <div class="sublabel">BSR vs ручной консалтинг</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Главные выводы</h3>
+    <ol style="padding-left: 20px; color: var(--text-muted); line-height: 2;">
+      <li><strong style="color: var(--green);">Слабо занятая ниша</strong> — полностью автоматизированный 360-анализ бизнеса (финансы + конкуренты + HR + digital + стратегия) в интерактивном HTML-формате не предлагает ни один игрок; AI.Инсайт (Контур) ближе всех, но фокусируется на проверке контрагентов</li>
+      <li><strong style="color: var(--green);">Пустое пространство</strong> — между бесплатным промптом в ChatGPT (глубина 1-2/10) и консалтингом за 500K+ руб. (глубина 7-9/10) нет промежуточного продукта</li>
+      <li><strong style="color: var(--blue);">Вакуум после Big4/Big3</strong> — McKinsey, BCG, PwC, Deloitte ушли; рынок консалтинга вырос на 15% и ищет новых провайдеров</li>
+      <li><strong style="color: var(--blue);">AI-платформы на раннем этапе</strong> — AI.Инсайт (Контур) уже запущен, СПАРК и Контур.Фокус добавляют AI-функции, но комплексный стратегический анализ 360 пока не покрыт</li>
+      <li><strong style="color: var(--orange);">Главная угроза</strong> — Сбер/Яндекс/Контур могут войти в нишу с несравнимыми ресурсами и данными</li>
+      <li><strong style="color: var(--red);">Главная слабость BSR</strong> — качество 5/10; без доведения до 7+/10 продукт не конкурентоспособен</li>
+    </ol>
+  </div>
+</section>
+
+<!-- II. РЫНОК -->
+<section id="market">
+  <h2>II. Обзор рынка</h2>
+  <p class="section-desc">Объёмы, динамика, структура рынка маркетинговых исследований и аудита в России</p>
+
+  <h3>Рынок маркетинговых исследований</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>Год</th><th>Объём (млрд руб.)</th><th>Рост г/г</th><th>Источник</th><th>Достоверность</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>2021</td><td>22,4 - 25,9</td><td>+15,5%</td><td>ESOMAR / ОИРОМ</td><td><span class="badge-fact">ФАКТ</span></td></tr>
+        <tr><td>2022</td><td>~22,0</td><td>-15,3%</td><td>ОИРОМ</td><td><span class="badge-fact">ФАКТ</span></td></tr>
+        <tr><td>2023</td><td>18,0 - 24,9</td><td>+6-8%</td><td>Гильдия Маркетологов / ОИРОМ</td><td><span class="badge-calc">РАСЧЁТ</span></td></tr>
+        <tr><td>2024</td><td>20,0 - 22,0</td><td>+15%</td><td>Совет Гильдии Маркетологов</td><td><span class="badge-estimate">ОЦЕНКА</span></td></tr>
+        <tr><td>2025 (прогноз)</td><td>23-25</td><td>+12-15%</td><td>Экстраполяция</td><td><span class="badge-estimate">ОЦЕНКА</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="calc-trace">
+    <strong>Расхождение данных:</strong> ОИРОМ считает 24,9 млрд (включая социологию), Гильдия Маркетологов — 18-18,5 млрд (только маркетинг). Разница в методологии.
+    <br><span class="source">Источники: ОИРОМ (oirom.ru), Гильдия Маркетологов (marketologi.ru) — уровень B+C</span>
+  </div>
+
+  <h3>Рынок аудита и консалтинга</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>Сегмент</th><th>Объём 2024 (млрд руб.)</th><th>Рост г/г</th><th>Достоверность</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Аудит (совокупная выручка, Минфин)</td><td>57,3</td><td>+5%</td><td><span class="badge-fact">ФАКТ</span></td></tr>
+        <tr><td>Консалтинг (RAEX, все группы)</td><td>140,0</td><td>+15%</td><td><span class="badge-fact">ФАКТ</span></td></tr>
+        <tr><td>в т.ч. IT-консалтинг</td><td>46,3</td><td>+14%</td><td><span class="badge-fact">ФАКТ</span></td></tr>
+        <tr><td>в т.ч. стратегический</td><td>14,8</td><td>+39%</td><td><span class="badge-fact">ФАКТ</span></td></tr>
+        <tr><td>в т.ч. финансовый</td><td>18,5</td><td>+8%</td><td><span class="badge-fact">ФАКТ</span></td></tr>
+        <tr><td>Due Diligence (оценка)</td><td>5-8</td><td>—</td><td><span class="badge-estimate">ОЦЕНКА</span></td></tr>
+        <tr><td>Маркетинговые услуги (РАМУ)</td><td>127,8</td><td>+17%</td><td><span class="badge-fact">ФАКТ</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>TAM / SAM / SOM для BSR</h3>
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="value" style="font-size:1.5rem;">180-220</div>
+      <div class="label">TAM (млрд руб.)</div>
+      <div class="sublabel">Исследования + аудит + консалтинг + BI</div>
+    </div>
+    <div class="stat-card">
+      <div class="value" style="font-size:1.5rem;">11-17</div>
+      <div class="label">SAM (млрд руб.)</div>
+      <div class="sublabel">Кабинетные исследования + экспресс + BI</div>
+    </div>
+    <div class="stat-card">
+      <div class="value" style="font-size:1.5rem;">50-100</div>
+      <div class="label">SOM (млн руб.)</div>
+      <div class="sublabel">Реалистично за 2-3 года</div>
+    </div>
+  </div>
+  <div class="calc-trace">
+    <strong>TAM</strong> = Рынок маркетинговых исследований (22 млрд) + Консалтинг (140 млрд) + Аудит (57 млрд) = ~220 млрд<br>
+    <strong>SAM</strong> = Кабинетные исследования (~5 млрд) + Экспресс-аналитика (~3 млрд) + BI/SaaS (~4 млрд) + Маркетинговый DD (~2 млрд) = 11-17 млрд<br>
+    <strong>SOM</strong> = При 500-1000 отчётах/год x 50-100K руб. = 50-100 млн руб.<br>
+    <span class="source">Достоверность: TAM — ФАКТ (RAEX, Минфин), SAM — ОЦЕНКА (экстраполяция), SOM — ОЦЕНКА (бизнес-план)</span>
+  </div>
+</section>
+
+<!-- III. 62 КОМПАНИИ -->
+<section id="competitors">
+  <h2>III. Карта конкурентов: 62 компании</h2>
+  <p class="section-desc">Полный список игроков рынка маркетинговой аналитики, бизнес-аудитов и Due Diligence в России</p>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="value">28</div>
+      <div class="label">Маркетинговые исследования</div>
+      <div class="sublabel">45% рынка</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">14</div>
+      <div class="label">Аудит и DD</div>
+      <div class="sublabel">23% рынка</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">10</div>
+      <div class="label">Стратегический консалтинг</div>
+      <div class="sublabel">16% рынка</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">10</div>
+      <div class="label">AI/Tech платформы</div>
+      <div class="sublabel">16% рынка</div>
+    </div>
+  </div>
+
+  <!-- Cat 1 -->
+  <h3>Категория 1: Крупные консалтинговые (бывшие международные)</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>#</th><th>Компания</th><th>Бывший бренд</th><th>Специализация</th><th>Размер</th><th>Сегмент</th><th>Позиционирование</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td><strong>Яков и Партнёры</strong></td><td>Осн. бывшими партнёрами McKinsey Russia</td><td>Стратегический консалтинг</td><td><span class="tag tag-large">250+ чел.</span></td><td><span class="tag tag-premium">Премиум</span></td><td>Запущен в 2022 бывшими партнёрами McKinsey Russia</td></tr>
+        <tr><td>2</td><td><strong>Strategy Partners</strong></td><td>Экосистема Сбер</td><td>Стратегический консалтинг, анализ отраслей</td><td><span class="tag tag-large">Крупный</span></td><td><span class="tag tag-premium">Премиум</span></td><td>Топ-5 RAEX по стратегии</td></tr>
+        <tr><td>3</td><td><strong>SBS Consulting</strong></td><td>—</td><td>Стратегический консалтинг</td><td><span class="tag tag-large">500+ проектов</span></td><td><span class="tag tag-premium">Премиум</span></td><td>Нац. Консалтинговый Альянс</td></tr>
+        <tr><td>4</td><td><strong>Б1</strong></td><td>EY</td><td>Аудит, стратегия, DD</td><td><span class="tag tag-large">3000+ чел.</span></td><td><span class="tag tag-premium">Премиум</span></td><td>Лидер RAEX 11 лет</td></tr>
+        <tr><td>5</td><td><strong>Kept</strong></td><td>KPMG</td><td>Аудит, консалтинг, DD</td><td><span class="tag tag-large">4000 чел.</span></td><td><span class="tag tag-premium">Премиум</span></td><td>1-е место RAEX аудит</td></tr>
+        <tr><td>6</td><td><strong>ТеДо</strong></td><td>PwC</td><td>Аудит, стратегия</td><td><span class="tag tag-large">3700 чел.</span></td><td><span class="tag tag-premium">Премиум</span></td><td>4-е место RAEX аудит</td></tr>
+        <tr><td>7</td><td><strong>ДРТ</strong></td><td>Deloitte</td><td>Аудит, DD, M&A</td><td><span class="tag tag-large">3000 чел.</span></td><td><span class="tag tag-premium">Премиум</span></td><td>3-е место RAEX аудит</td></tr>
+        <tr><td>8</td><td><strong>IBS Consulting</strong></td><td>—</td><td>Бизнес-консалтинг, IT</td><td><span class="tag tag-large">Крупный</span></td><td><span class="tag tag-premium">Премиум</span></td><td>1-е место RAEX консалтинг</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Cat 2 -->
+  <h3>Категория 2: Крупные российские исследовательские</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>#</th><th>Компания</th><th>Специализация</th><th>Выручка</th><th>Сегмент</th><th>Позиционирование</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>9</td><td><strong>Mediascope</strong></td><td>Медиаисследования</td><td>2,5-3,0 млрд <span class="badge-estimate">О</span></td><td><span class="tag tag-premium">Премиум</span></td><td>Монополист ТВ-измерений</td></tr>
+        <tr><td>10</td><td><strong>Ipsos (Россия)</strong></td><td>Consumer insights</td><td>500 млн-1 млрд <span class="badge-estimate">О</span></td><td><span class="tag tag-premium">Премиум</span></td><td>Международная сеть</td></tr>
+        <tr><td>11</td><td><strong>Ромир</strong></td><td>Потребительская панель</td><td>1,0-1,5 млрд <span class="badge-estimate">О</span></td><td><span class="tag tag-premium">Средний-Прем</span></td><td>40К домохозяйств в панели</td></tr>
+        <tr><td>12</td><td><strong>НАФИ</strong></td><td>Финансовые исследования</td><td>300-500 млн <span class="badge-estimate">О</span></td><td><span class="tag tag-medium">Средний-Прем</span></td><td>Топ-3 по цитируемости</td></tr>
+        <tr><td>13</td><td><strong>ВЦИОМ</strong></td><td>Социология + маркетинг</td><td>н/д</td><td><span class="tag tag-medium">Средний-Прем</span></td><td>Крупнейший гос. центр опросов</td></tr>
+        <tr><td>14</td><td><strong>ФОМ</strong></td><td>Социология + маркетинг</td><td>н/д</td><td><span class="tag tag-medium">Средний-Прем</span></td><td>1-е место рейтинга Группы 7/89</td></tr>
+        <tr><td>15</td><td><strong>Data Insight</strong></td><td>E-commerce аналитика</td><td>100-200 млн <span class="badge-estimate">О</span></td><td><span class="tag tag-medium">Средний-Прем</span></td><td>Лидер аналитики e-com в РФ</td></tr>
+        <tr><td>16</td><td><strong>INFOLine</strong></td><td>Ритейл-аналитика</td><td>н/д</td><td><span class="tag tag-medium">Средний</span></td><td>5000+ СМИ ежедневно</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Cat 3 -->
+  <h3>Категория 3: Средние агентства маркетинговых исследований (14 компаний)</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>#</th><th>Компания</th><th>Специализация</th><th>Сегмент</th><th>Позиционирование</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>17</td><td><strong>MegaResearch</strong></td><td>B2B/B2C исследования</td><td><span class="tag tag-medium">Средний</span></td><td>16 645+ отчётов</td></tr>
+        <tr><td>18</td><td><strong>ГидМаркет</strong></td><td>Исследования, бизнес-планы</td><td><span class="tag tag-medium">Средний</span></td><td>Топ-3 рейтинга</td></tr>
+        <tr><td>19</td><td><strong>IndexBox</strong></td><td>Прогнозирование рынков</td><td><span class="tag tag-medium">Средний</span></td><td>Международный охват</td></tr>
+        <tr><td>20</td><td><strong>BusinesStat</strong></td><td>Готовые исследования</td><td><span class="tag tag-medium">Средний</span></td><td>Сотни отчётов/год</td></tr>
+        <tr><td>21</td><td><strong>NeoAnalytics</strong></td><td>Аналитические отчёты</td><td><span class="tag tag-budget">Бюджет-Сред</span></td><td>Все регионы РФ</td></tr>
+        <tr><td>22</td><td><strong>Alto Consulting Group</strong></td><td>Финансовая аналитика, ВЭД</td><td><span class="tag tag-medium">Средний</span></td><td>Анализ ВЭД, госзакупки</td></tr>
+        <tr><td>23</td><td><strong>MARCS</strong></td><td>Consumer behavior</td><td><span class="tag tag-medium">Средний</span></td><td>1000+ проектов</td></tr>
+        <tr><td>24</td><td><strong>DISCOVERY Research</strong></td><td>Готовые обзоры отраслей</td><td><span class="tag tag-budget">Бюджет-Сред</span></td><td>Прогнозы развития</td></tr>
+        <tr><td>25</td><td><strong>M.A. Research</strong></td><td>Исследования, бизнес-планы</td><td><span class="tag tag-medium">Средний</span></td><td>Отраслевые аналитики</td></tr>
+        <tr><td>26</td><td><strong>СканМаркет</strong></td><td>Маркетинг + социология</td><td><span class="tag tag-medium">Средний</span></td><td>Торговая недвижимость</td></tr>
+        <tr><td>27</td><td><strong>Bazis Research</strong></td><td>B2B исследования</td><td><span class="tag tag-medium">Средний</span></td><td>ESOMAR, EPHMRA</td></tr>
+        <tr><td>28</td><td><strong>АИПР</strong></td><td>Конкурентный анализ</td><td><span class="tag tag-budget">Бюджет-Сред</span></td><td>Готовые + заказные</td></tr>
+        <tr><td>29</td><td><strong>Текарт</strong></td><td>B2B исследования</td><td><span class="tag tag-medium">Средний</span></td><td>Собственные методологии B2B</td></tr>
+        <tr><td>30</td><td><strong>РБК Магазин</strong></td><td>Агрегатор исследований</td><td><span class="tag tag-budget">Бюджет-Сред</span></td><td>15 000+ готовых отчётов</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Cat 4 -->
+  <h3>Категория 4: Аудиторские и Due Diligence (10 компаний)</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>#</th><th>Компания</th><th>Специализация</th><th>Сегмент</th><th>Позиционирование</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>31</td><td><strong>МКПЦ</strong></td><td>Аудит, DD, налоги</td><td><span class="tag tag-medium">Средний-Прем</span></td><td>500+ DD проектов</td></tr>
+        <tr><td>32</td><td><strong>Правовест Аудит</strong></td><td>Аудит, DD</td><td><span class="tag tag-medium">Средний</span></td><td>765+ аудитов/год, 13-е RAEX</td></tr>
+        <tr><td>33</td><td><strong>КСК Групп</strong></td><td>Аудит, консалтинг, DD</td><td><span class="tag tag-medium">Средний</span></td><td>23-я RAEX консалтинг</td></tr>
+        <tr><td>34</td><td><strong>Лемчик, Крупский</strong></td><td>Юридический DD, M&A</td><td><span class="tag tag-medium">Средний-Прем</span></td><td>Спец. юридический DD</td></tr>
+        <tr><td>35</td><td><strong>АИП (AP Group)</strong></td><td>Аудит, DD</td><td><span class="tag tag-medium">Средний</span></td><td>25+ лет опыта</td></tr>
+        <tr><td>36</td><td><strong>Юникон</strong></td><td>Аудит, DD, IT-консалтинг</td><td><span class="tag tag-medium">Средний-Прем</span></td><td>1900 чел., BDO Alliance</td></tr>
+        <tr><td>37</td><td><strong>СТЕК</strong></td><td>Аудит, DD</td><td><span class="tag tag-medium">Средний</span></td><td>Топ-20 RAEX</td></tr>
+        <tr><td>38</td><td><strong>Аллент-Аудит</strong></td><td>Аудит, DD, МСФО</td><td><span class="tag tag-medium">Средний</span></td><td>Топ-50 аудит</td></tr>
+        <tr><td>39</td><td><strong>РосКо</strong></td><td>Аудит, DD, юриспруденция</td><td><span class="tag tag-medium">Средний</span></td><td>Офисы: РФ, Лондон, Стамбул</td></tr>
+        <tr><td>40</td><td><strong>Деловой Профиль</strong></td><td>Аудит + маркетинг. исследования</td><td><span class="tag tag-medium">Средний</span></td><td>Топ-20 RAEX, аудит+маркетинг</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Cat 5 -->
+  <h3>Категория 5: Бутиковые / нишевые (12 компаний)</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>#</th><th>Компания</th><th>Специализация</th><th>Сегмент</th><th>Позиционирование</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>41</td><td><strong>Paper Planes</strong></td><td>Маркетинг-консалтинг, CJM</td><td><span class="tag tag-medium">Средний-Прем</span></td><td>Data-driven маркетинг</td></tr>
+        <tr><td>42</td><td><strong>OKS Labs</strong></td><td>Стратегия + оценка</td><td><span class="tag tag-medium">Средний</span></td><td>Маркет. аудит + оценка</td></tr>
+        <tr><td>43</td><td><strong>LAMACON</strong></td><td>Supply chain</td><td><span class="tag tag-medium">Средний-Прем</span></td><td>Лучшая команда SC в Европе</td></tr>
+        <tr><td>44</td><td><strong>TSQ Consulting</strong></td><td>Управление, HR, стратегия</td><td><span class="tag tag-medium">Средний</span></td><td>3-е RAEX HR, 4-е стратегия</td></tr>
+        <tr><td>45</td><td><strong>ResearchView</strong></td><td>Маркетинг. исследования</td><td><span class="tag tag-budget">Бюджет-Сред</span></td><td>Полный цикл, независимое</td></tr>
+        <tr><td>46</td><td><strong>В точку</strong></td><td>Маркетинг + социология</td><td><span class="tag tag-budget">Бюджет-Сред</span></td><td>Партнёрский клуб</td></tr>
+        <tr><td>47</td><td><strong>RADAR Research</strong></td><td>Маркетинг. исследования</td><td><span class="tag tag-budget">Бюджет-Сред</span></td><td>Решения на основе данных</td></tr>
+        <tr><td>48</td><td><strong>Грифон-Эксперт</strong></td><td>Конкурентная разведка</td><td><span class="tag tag-medium">Средний</span></td><td>CI для промышленности</td></tr>
+        <tr><td>49</td><td><strong>Кукушка</strong></td><td>Исследования через игры</td><td><span class="tag tag-budget">Бюджет-Сред</span></td><td>41 млн аудитория, AI-гибрид</td></tr>
+        <tr><td>50</td><td><strong>VIGOR Consult</strong></td><td>Маркетинг + продажи</td><td><span class="tag tag-budget">Бюджет-Сред</span></td><td>Data-driven решения</td></tr>
+        <tr><td>51</td><td><strong>Проктор</strong></td><td>Анализ конкурентов</td><td><span class="tag tag-budget">Бюджет</span></td><td>Бутиковый формат</td></tr>
+        <tr><td>52</td><td><strong>Plan C Strategy</strong></td><td>Аудит бизнеса, стратегия</td><td><span class="tag tag-medium">Средний</span></td><td>СНГ: РФ, КЗ, БЕ</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Cat 6 -->
+  <h3>Категория 6: AI/Tech платформы и SaaS (10 компаний)</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>#</th><th>Компания</th><th>Специализация</th><th>Сегмент</th><th>Позиционирование</th><th>Конкурент BSR?</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>53</td><td><strong>СПАРК (Интерфакс)</strong></td><td>Проверка контрагентов</td><td><span class="tag tag-medium">Средний-Прем</span></td><td>Абсолютный лидер ИАС</td><td>Частично (данные, не анализ)</td></tr>
+        <tr><td>54</td><td><strong>Контур.Фокус</strong></td><td>Проверка контрагентов</td><td><span class="tag tag-medium">Средний</span></td><td>Экосистема СКБ Контур</td><td>Частично</td></tr>
+        <tr><td>55</td><td><strong>AI.Инсайт (Контур)</strong></td><td>AI-анализ рынка</td><td><span class="tag tag-medium">Средний</span></td><td>AI + миллиарды данных</td><td style="color:var(--red);font-weight:600;">Ближайший аналог!</td></tr>
+        <tr><td>56</td><td><strong>СБИС (Saby)</strong></td><td>Проверка контрагентов</td><td><span class="tag tag-budget">Бюджет-Сред</span></td><td>700+ источников</td><td>Частично</td></tr>
+        <tr><td>57</td><td><strong>MPStats</strong></td><td>Маркетплейс-аналитика</td><td><span class="tag tag-medium">Средний</span></td><td>Стандарт WB/Ozon</td><td>Нет (другая ниша)</td></tr>
+        <tr><td>58</td><td><strong>Keys.so</strong></td><td>SEO-аналитика</td><td><span class="tag tag-budget">Бюджет</span></td><td>Замена SEMrush для РФ</td><td>Нет (узкий фокус)</td></tr>
+        <tr><td>59</td><td><strong>Signum.AI</strong></td><td>AI конкурентная разведка</td><td><span class="tag tag-medium">Средний</span></td><td>AI-мониторинг конкурентов</td><td>Частично</td></tr>
+        <tr><td>60</td><td><strong>SEOWORK</strong></td><td>SEO-аналитика</td><td><span class="tag tag-medium">Средний</span></td><td>Замена Ahrefs для РФ</td><td>Нет (узкий фокус)</td></tr>
+        <tr><td>61</td><td><strong>Глобас (Credinform)</strong></td><td>Кредитные отчёты, скоринг</td><td><span class="tag tag-medium">Средний</span></td><td>Международная база</td><td>Частично</td></tr>
+        <tr><td>62</td><td><strong style="color:var(--gold);">BSR (Анализ бизнеса 360)</strong></td><td>AI автоматический 360-анализ</td><td><span class="tag tag-budget">Бюджет-Сред</span></td><td>Полный AI-аудит 360 (ниша слабо занята)</td><td style="color:var(--gold);font-weight:600;">МЫ</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- IV. ПРОДУКТОВЫЙ АНАЛИЗ -->
+<section id="product">
+  <h2>IV. Продуктовый анализ</h2>
+  <p class="section-desc">Что предлагает рынок, боли клиентов, форматы отчётов</p>
+
+  <h3>Форматы отчётов на рынке</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>Формат</th><th>Кто использует</th><th>Доля рынка</th><th>Плюсы</th><th>Минусы</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>PDF</strong></td><td>90% агентств</td><td>~70%</td><td>Привычный, красивый</td><td>Статичный, устаревает</td></tr>
+        <tr><td><strong>PowerPoint</strong></td><td>Стратеги (Яков, Strategy Partners)</td><td>~15%</td><td>Презентабельный</td><td>Не интерактивный</td></tr>
+        <tr><td><strong>Дашборд (BI)</strong></td><td>Enterprise (Visiology, DataLens)</td><td>~10%</td><td>Real-time, фильтры</td><td>Дорого, нужна инфраструктура</td></tr>
+        <tr><td><strong style="color:var(--gold);">HTML-отчёт</strong></td><td><strong style="color:var(--gold);">Почти никто (BSR!)</strong></td><td>~0%</td><td>Интерактивный, offline, лёгкий</td><td>Нет стандарта на рынке</td></tr>
+        <tr><td><strong>Excel/Sheets</strong></td><td>МСБ, селлеры</td><td>~5%</td><td>Гибко, дёшево</td><td>Сырые данные</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Нерешённые боли клиентов</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>Боль</th><th>Почему не решают</th><th>Возможность для BSR</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>«Хочу понять бизнес целиком за 1 день»</td><td>Исследование = 2-4 недели</td><td style="color:var(--green);">Полный отчёт за часы</td></tr>
+        <tr><td>«Бюджет &lt; 100K руб.»</td><td>Минимум у агентств 80-150K</td><td style="color:var(--green);">Себестоимость ~500-2000 руб.</td></tr>
+        <tr><td>«Данные устаревают через месяц»</td><td>PDF = снимок на дату</td><td style="color:var(--green);">Автообновления</td></tr>
+        <tr><td>«Не понимаю терминологию»</td><td>Отчёты для экспертов</td><td style="color:var(--green);">Глоссарий + двухуровневый формат</td></tr>
+        <tr><td>«Нет прозрачности расчётов»</td><td>«Чёрный ящик» эксперта</td><td style="color:var(--green);">Calc-trace с формулами</td></tr>
+        <tr><td>«Нужен и финансы, и маркетинг»</td><td>Разные агентства, данные не связаны</td><td style="color:var(--green);">Единый граф зависимостей</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Сравнение подходов</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>Параметр</th><th>Ручная аналитика</th><th>BSR (AI)</th><th>Преимущество</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Время</td><td>2-8 недель</td><td>1-4 часа</td><td style="color:var(--green);">BSR в 100-1000x быстрее</td></tr>
+        <tr><td>Цена</td><td>100K - 5M руб.</td><td>~500-2000 руб. себестоимость</td><td style="color:var(--green);">BSR в 50-1000x дешевле</td></tr>
+        <tr><td>Масштаб</td><td>Линейный (люди)</td><td>Экспоненциальный</td><td style="color:var(--green);">BSR масштабируется</td></tr>
+        <tr><td>Глубина</td><td>8/10</td><td>5/10 (сейчас)</td><td style="color:var(--red);">Ручной анализ глубже</td></tr>
+        <tr><td>Прозрачность</td><td>Низкая</td><td>Высокая (calc-trace)</td><td style="color:var(--green);">BSR прозрачнее</td></tr>
+        <tr><td>Актуальность</td><td>Снимок на дату</td><td>Обновляемый</td><td style="color:var(--green);">BSR актуальнее</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- V. TECH -->
+<section id="tech">
+  <h2>V. Технологический анализ</h2>
+  <p class="section-desc">Стеки конкурентов, AI-платформы, инструменты автоматизации</p>
+
+  <h3>AI-платформы: мир vs Россия</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>Платформа</th><th>Фокус</th><th>Оценка/Funding</th><th>Работает с РФ?</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>AlphaSense</strong></td><td>Market intelligence, M&A</td><td>$4B+</td><td style="color:var(--red);">Нет</td></tr>
+        <tr><td><strong>Hebbia</strong></td><td>AI research & reasoning</td><td>$130M Series B</td><td style="color:var(--red);">Нет</td></tr>
+        <tr><td><strong>Crayon</strong></td><td>Competitive intelligence</td><td>~$100M+</td><td style="color:var(--red);">Нет</td></tr>
+        <tr><td><strong>Klue</strong></td><td>CI + sales enablement</td><td>G2 Leader</td><td style="color:var(--red);">Нет</td></tr>
+        <tr><td><strong>Competely</strong></td><td>Instant competitive analysis</td><td>Стартап</td><td style="color:var(--red);">Нет</td></tr>
+        <tr><td><strong>AI.Инсайт (Контур)</strong></td><td>AI-анализ рынка</td><td>Часть СКБ Контур</td><td style="color:var(--green);">Да</td></tr>
+        <tr><td><strong>Visiology</strong></td><td>Enterprise BI + AI</td><td>Лидер РФ BI</td><td style="color:var(--green);">Да (визуализация, не анализ)</td></tr>
+        <tr><td><strong style="color:var(--gold);">BSR</strong></td><td>Полный 360-анализ бизнеса</td><td>MVP</td><td style="color:var(--green);font-weight:600;">Да, заточен под РФ</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h4>Ключевой разрыв</h4>
+    <p style="color:var(--text-muted);">Российские BI-платформы визуализируют <strong>свои данные</strong> клиента. Ни одна из них не собирает данные из открытых источников и не генерирует аналитический отчёт автоматически. Западные AI-платформы ($4B+ AlphaSense) не работают с российскими реестрами. AI.Инсайт (Контур) ближе всех, но сфокусирован на проверке контрагентов, а не на комплексном стратегическом анализе. <strong style="color:var(--gold);">BSR — один из немногих продуктов на пересечении: AI + российские реестры + полный 360-анализ.</strong></p>
+  </div>
+
+  <h3>Автоматизация Due Diligence</h3>
+  <div class="card">
+    <p style="color:var(--text-muted);">В РФ автоматизация DD фрагментарна: Контур.Фокус предлагает автоматические проверки контрагентов через API и ИИ-отчёты, СПАРК — автоматизацию регламентных проверок. Однако <strong>комплексный стратегический DD</strong> (финансовый + рыночный + операционный + HR) остаётся ручным. В мире: Kira (Litera, 140+ языков), Harvey (десятки языков), Spellbook (140+ языков) — мультиязычные, но не интегрированы с российскими реестрами. По данным McKinsey, AI сокращает трудозатраты в отдельных procurement-активностях на 50-80% <span class="badge-estimate">ОЦЕНКА</span>. <strong style="color:var(--gold);">BSR может стать первой платформой комплексного автоматизированного стратегического DD в России.</strong></p>
+  </div>
+</section>
+
+<!-- VI. ФИНАНСЫ -->
+<section id="finance">
+  <h2>VI. Финансовый анализ</h2>
+  <p class="section-desc">Показатели ключевых игроков, unit economics, маржинальность</p>
+
+  <h3>Бывшая «Большая четвёрка»</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>Компания</th><th>Бренд</th><th>Выручка 2024</th><th>Сотрудники</th><th>RAEX</th><th>Достоверность</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Kept</strong></td><td>ex-KPMG</td><td>9,2 млрд</td><td>~4 000</td><td>1-е место аудит</td><td><span class="badge-fact">ФАКТ</span></td></tr>
+        <tr><td><strong>Б1</strong></td><td>ex-EY</td><td>6,5 млрд</td><td>~3 500</td><td>2-е место аудит</td><td><span class="badge-fact">ФАКТ</span></td></tr>
+        <tr><td><strong>ДРТ</strong></td><td>ex-Deloitte</td><td>5,5 млрд</td><td>~3 000</td><td>3-е место аудит</td><td><span class="badge-fact">ФАКТ</span></td></tr>
+        <tr><td><strong>ТеДо</strong></td><td>ex-PwC</td><td>4,7 млрд</td><td>~3 700</td><td>4-е место аудит</td><td><span class="badge-fact">ФАКТ</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="calc-trace">
+    <span class="source">Источники: RAEX рэнкинг 2025 (уровень A), раскрытие информации ТеДо (уровень A), TAdviser (уровень C)</span>
+  </div>
+
+  <h3>Исследовательские компании</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>Компания</th><th>Выручка</th><th>Чистая прибыль</th><th>Маржа</th><th>Достоверность</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>GfK Rus</strong></td><td>2,0-2,7 млрд</td><td>465 млн</td><td>~23%</td><td><span class="badge-fact">ФАКТ</span> (RAEX)</td></tr>
+        <tr><td><strong>Mediascope</strong></td><td>2,5-3,0 млрд</td><td>н/д</td><td>н/д</td><td><span class="badge-estimate">ОЦЕНКА</span></td></tr>
+        <tr><td><strong>Ромир</strong></td><td>1,0-1,5 млрд</td><td>н/д</td><td>н/д</td><td><span class="badge-estimate">ОЦЕНКА</span></td></tr>
+        <tr><td><strong>Data Insight</strong></td><td>100-200 млн</td><td>н/д</td><td>н/д</td><td><span class="badge-estimate">ОЦЕНКА</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Unit Economics: BSR vs рынок</h3>
+  <div class="two-col">
+    <div class="card">
+      <h4 style="color:var(--gold);">BSR (AI-автоматизация)</h4>
+      <table>
+        <tr><td>Себестоимость отчёта</td><td><strong>500-2 000 руб.</strong></td></tr>
+        <tr><td>Целевая цена</td><td>5 000-15 000 руб.</td></tr>
+        <tr><td>Маржа</td><td style="color:var(--green);">70-90%</td></tr>
+        <tr><td>Точка безубыточности</td><td>50-100 отчётов/мес</td></tr>
+        <tr><td>CAC (ожидаемый)</td><td>2 000-5 000 руб.</td></tr>
+        <tr><td>LTV (целевой)</td><td>50 000-200 000 руб.</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h4 style="color:var(--text-muted);">Традиционное агентство (5 чел.)</h4>
+      <table>
+        <tr><td>ФОТ + расходы</td><td><strong>1,1-1,6 млн/мес</strong></td></tr>
+        <tr><td>Средний чек</td><td>300 000-500 000 руб.</td></tr>
+        <tr><td>Маржа</td><td>15-25%</td></tr>
+        <tr><td>Точка безубыточности</td><td>5-9 проектов/мес</td></tr>
+        <tr><td>CAC</td><td>50 000-150 000 руб.</td></tr>
+        <tr><td>LTV</td><td>900K-4,5M руб.</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- VII. МАРКЕТИНГ И КОММЕРЦИЯ -->
+<section id="marketing">
+  <h2>VII. Маркетинговый и коммерческий анализ</h2>
+
+  <h3>Ценообразование на рынке</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>Тип услуги</th><th>Цена (руб.)</th><th>Срок</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Готовый отчёт (PDF)</td><td>30 000 - 300 000</td><td>Мгновенно</td></tr>
+        <tr><td>Экспресс-анализ (desk research)</td><td>50 000 - 150 000</td><td>5-10 дней</td></tr>
+        <tr><td>Кабинетное исследование</td><td>120 000 - 400 000</td><td>2-4 недели</td></tr>
+        <tr><td>Полное маркетинговое исследование</td><td>200 000 - 1 200 000</td><td>4-8 недель</td></tr>
+        <tr><td>Стратегический консалтинг</td><td>500 000 - 5 000 000+</td><td>1-3 мес.</td></tr>
+        <tr><td>Due Diligence</td><td>400 000 - 10 000 000+</td><td>3-12 недель</td></tr>
+        <tr><td><strong style="color:var(--gold);">BSR (целевая цена)</strong></td><td><strong style="color:var(--gold);">5 000 - 15 000</strong></td><td><strong style="color:var(--gold);">1-4 часа</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Каналы продвижения конкурентов</h3>
+  <div class="card">
+    <p style="color:var(--text-muted);">Стратегия лидеров: <strong>«бесплатное исследование → цитируемость и экспертность → дорогие заказы»</strong>. Data Insight публикует бесплатные отчёты по e-commerce → их цитируют все СМИ → бренды заказывают кастомные исследования. Эта модель работает и для BSR: публиковать демо-отчёты → наращивать авторитет.</p>
+    <br>
+    <p style="color:var(--text-muted);">Каналы: конференции/спикерство (60%), публикация бесплатных отчётов (50%), Telegram-каналы (40%), SEO (30%), referrals (70%).</p>
+  </div>
+
+  <h3>Целевые сегменты для BSR</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>Сегмент</th><th>Объём</th><th>Средний чек</th><th>Willingness to pay</th><th>Приоритет</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>МСБ в сфере услуг</strong></td><td>~2 млн субъектов</td><td>5-15K руб./отчёт</td><td>Высокая</td><td style="color:var(--green);font-weight:600;">Beachhead</td></tr>
+        <tr><td><strong>Инвесторы / бизнес-ангелы</strong></td><td>~10 000 активных</td><td>15-30K руб./отчёт</td><td>Высокая</td><td><span class="tag tag-medium">Вторичный</span></td></tr>
+        <tr><td><strong>Банки (API-скоринг)</strong></td><td>Топ-20 банков</td><td>500-2K руб./запрос</td><td>Средняя (долгий цикл)</td><td><span class="tag tag-medium">Третичный</span></td></tr>
+        <tr><td><strong>Консалтинговые фирмы</strong></td><td>~200 компаний</td><td>White-label per-report</td><td>Средняя</td><td><span class="tag tag-medium">Третичный</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- VIII. HR -->
+<section id="hr">
+  <h2>VIII. HR и операционный анализ</h2>
+
+  <h3>Зарплаты аналитиков (Москва, gross)</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>Позиция</th><th>Junior</th><th>Middle</th><th>Senior</th><th>Lead/Head</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Аналитик рынка</strong></td><td>60-90K</td><td>130-180K</td><td>200-300K</td><td>300-450K</td></tr>
+        <tr><td><strong>Data Scientist</strong></td><td>90-130K</td><td>180-280K</td><td>300-500K+</td><td>500-700K+</td></tr>
+        <tr><td><strong>ML Engineer</strong></td><td>100-150K</td><td>200-300K</td><td>350-500K</td><td>—</td></tr>
+        <tr><td><strong>Data Engineer</strong></td><td>80-130K</td><td>150-250K</td><td>250-420K</td><td>—</td></tr>
+        <tr><td><strong>DD-консультант</strong></td><td>180K+</td><td>250-350K</td><td>350-500K+</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="calc-trace">
+    <span class="source">Источники: hh.ru (stats.hh.ru), ppc.world, GeekLink, DreamJob — уровень C+D. Данные 2025-2026.</span>
+  </div>
+
+  <h3>Автоматизация процессов</h3>
+  <div class="two-col">
+    <div class="card">
+      <h4 style="color:var(--green);">Автоматизируется (70%)</h4>
+      <ul style="list-style:none;padding:0;color:var(--text-muted);font-size:0.9rem;">
+        <li style="padding:4px 0;">Сбор ФНС/ЕГРЮЛ — 90% экономия</li>
+        <li style="padding:4px 0;">Скрапинг цен и каталогов — 90%</li>
+        <li style="padding:4px 0;">Мониторинг конкурентов — 80%</li>
+        <li style="padding:4px 0;">Анализ соцсетей — 85%</li>
+        <li style="padding:4px 0;">NLP-анализ отзывов — 80%</li>
+        <li style="padding:4px 0;">SEO-аудит — 70%</li>
+        <li style="padding:4px 0;">Генерация шаблонных отчётов — 60-70%</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 style="color:var(--red);">Только вручную (30%)</h4>
+      <ul style="list-style:none;padding:0;color:var(--text-muted);font-size:0.9rem;">
+        <li style="padding:4px 0;">Экспертные интервью</li>
+        <li style="padding:4px 0;">Валидация гипотез</li>
+        <li style="padding:4px 0;">Стратегические рекомендации</li>
+        <li style="padding:4px 0;">Юридический Due Diligence</li>
+        <li style="padding:4px 0;">Клиентские презентации</li>
+        <li style="padding:4px 0;">Mystery shopping</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card">
+    <p style="color:var(--gold);font-weight:600;">AI-конвейер позволяет команде из 5 человек работать как 15-20 при правильной архитектуре. 45% маркетологов уже используют AI для аналитики.</p>
+  </div>
+</section>
+
+<!-- IX. SWOT -->
+<section id="swot">
+  <h2>IX. SWOT-анализ BSR</h2>
+  <p class="section-desc">Позиционирование BSR относительно 62 конкурентов</p>
+
+  <div class="swot-grid">
+    <div class="swot-card strength">
+      <h4 style="color:var(--green);">STRENGTHS</h4>
+      <ul>
+        <li><strong>Скорость</strong> — ~90 секунд vs 2-8 недель у конкурентов</li>
+        <li><strong>Полнота</strong> — 25+ секций, 11 этапов, единый отчёт (финансы + HR + digital + конкуренты + стратегия)</li>
+        <li><strong>Типизация</strong> — 6 типов бизнеса с адаптивными метриками</li>
+        <li><strong>Calc-trace</strong> — прозрачность вычислений (ФАКТ/РАСЧЁТ/ОЦЕНКА)</li>
+        <li><strong>Себестоимость</strong> — ~500-2000 руб. за отчёт vs 100K-5M руб.</li>
+        <li><strong>Локализация</strong> — ФНС, ЕГРЮЛ, HH.ru, 2ГИС, Rusprofile</li>
+        <li><strong>AI Board</strong> — самокритика и доработка отчёта AI-экспертами</li>
+      </ul>
+    </div>
+    <div class="swot-card weakness">
+      <h4 style="color:var(--red);">WEAKNESSES</h4>
+      <ul>
+        <li><strong>Качество 5/10</strong> — главная проблема; не конкурирует с ручным консалтингом по глубине</li>
+        <li><strong>Галлюцинации LLM</strong> — оценки без обоснования, неверные данные</li>
+        <li><strong>Нет проприетарных данных</strong> — все источники публичные</li>
+        <li><strong>Команда 1 человек</strong> — нет экспертов, маркетолога, sales</li>
+        <li><strong>Нет платящих клиентов</strong> — нет обратной связи от рынка</li>
+        <li><strong>LLM-зависимость</strong> — цены OpenAI/Google влияют на unit economics</li>
+      </ul>
+    </div>
+    <div class="swot-card opportunity">
+      <h4 style="color:var(--blue);">OPPORTUNITIES</h4>
+      <ul>
+        <li><strong>Вакуум после Big4/Big3</strong> — рынок консалтинга +15%, спрос > предложение</li>
+        <li><strong>~6,4 млн МСП</strong> (реестр ФНС, 2025) — 95% не могут позволить консалтинг за 500K+</li>
+        <li><strong>AI SaaS +38% в год</strong> — готовность рынка к AI-аналитике растёт</li>
+        <li><strong>Банковский скоринг</strong> — экспресс-аналитика для кредитования МСП</li>
+        <li><strong>Экосистемы</strong> — 1С, Битрикс24, amoCRM как точки входа</li>
+        <li><strong>СНГ</strong> — Казахстан, Узбекистан, Беларусь</li>
+        <li><strong>Подписочная модель</strong> — мониторинг конкурентов = recurring revenue</li>
+      </ul>
+    </div>
+    <div class="swot-card threat">
+      <h4 style="color:var(--orange);">THREATS</h4>
+      <ul>
+        <li><strong>Вход Сбер/Яндекс/Контур</strong> — GigaChat + СБИС, AI.Инсайт уже запущен</li>
+        <li><strong>Регуляторные риски</strong> — 152-ФЗ, ограничения scraping, закрытие API</li>
+        <li><strong>Репутационный</strong> — один скандал с ложными данными = смерть бренда</li>
+        <li><strong>Консалтинг + AI</strong> — гибрид «эксперт + AI» может быть сильнее чистого AI</li>
+        <li><strong>ChatGPT бесплатно</strong> — «зачем платить, если нейронка и так ответит?»</li>
+        <li><strong>Спад МСБ</strong> — выручка +8% при инфляции 9,5% = реальное снижение</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- X. ПЕРЦЕПТУАЛЬНАЯ КАРТА -->
+<section id="map">
+  <h2>X. Перцептуальная карта</h2>
+  <p class="section-desc">Оси: Цена (годовая стоимость) vs Глубина анализа</p>
+
+  <div class="perceptual-map">
+    <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" style="max-width:800px;width:100%;">
+      <!-- Grid -->
+      <rect x="80" y="20" width="700" height="440" fill="none" stroke="#2D2735" stroke-width="1"/>
+      <line x1="80" y1="240" x2="780" y2="240" stroke="#2D2735" stroke-width="0.5" stroke-dasharray="4"/>
+      <line x1="430" y1="20" x2="430" y2="460" stroke="#2D2735" stroke-width="0.5" stroke-dasharray="4"/>
+
+      <!-- Axes -->
+      <line x1="80" y1="460" x2="780" y2="460" stroke="#9B95A3" stroke-width="2"/>
+      <line x1="80" y1="20" x2="80" y2="460" stroke="#9B95A3" stroke-width="2"/>
+
+      <!-- Axis labels -->
+      <text x="430" y="495" fill="#9B95A3" font-size="13" text-anchor="middle" font-family="Inter, sans-serif">ЦЕНА (руб./год) →</text>
+      <text x="20" y="240" fill="#9B95A3" font-size="13" text-anchor="middle" font-family="Inter, sans-serif" transform="rotate(-90,20,240)">ГЛУБИНА АНАЛИЗА →</text>
+
+      <!-- Price labels -->
+      <text x="120" y="478" fill="#9B95A3" font-size="10" text-anchor="middle">Бесп.</text>
+      <text x="230" y="478" fill="#9B95A3" font-size="10" text-anchor="middle">15K</text>
+      <text x="350" y="478" fill="#9B95A3" font-size="10" text-anchor="middle">120K</text>
+      <text x="500" y="478" fill="#9B95A3" font-size="10" text-anchor="middle">300K</text>
+      <text x="650" y="478" fill="#9B95A3" font-size="10" text-anchor="middle">1M+</text>
+      <text x="750" y="478" fill="#9B95A3" font-size="10" text-anchor="middle">5M+</text>
+
+      <!-- Depth labels -->
+      <text x="70" y="420" fill="#9B95A3" font-size="10" text-anchor="end">2</text>
+      <text x="70" y="330" fill="#9B95A3" font-size="10" text-anchor="end">4</text>
+      <text x="70" y="240" fill="#9B95A3" font-size="10" text-anchor="end">6</text>
+      <text x="70" y="150" fill="#9B95A3" font-size="10" text-anchor="end">8</text>
+      <text x="70" y="60" fill="#9B95A3" font-size="10" text-anchor="end">10</text>
+
+      <!-- Empty space highlight -->
+      <rect x="140" y="150" width="250" height="180" rx="12" fill="rgba(201,164,76,0.08)" stroke="var(--gold)" stroke-width="1" stroke-dasharray="6"/>
+      <text x="265" y="245" fill="#C9A44C" font-size="11" text-anchor="middle" opacity="0.6">ПУСТОЕ</text>
+      <text x="265" y="260" fill="#C9A44C" font-size="11" text-anchor="middle" opacity="0.6">ПРОСТРАНСТВО</text>
+
+      <!-- ChatGPT -->
+      <circle cx="120" cy="410" r="16" fill="rgba(155,149,163,0.3)" stroke="#9B95A3"/>
+      <text x="120" y="414" fill="#9B95A3" font-size="8" text-anchor="middle">GPT</text>
+      <text x="120" y="440" fill="#9B95A3" font-size="9" text-anchor="middle">ChatGPT</text>
+
+      <!-- BSR сейчас -->
+      <circle cx="145" cy="290" r="18" fill="rgba(212,64,64,0.3)" stroke="#D44040" stroke-width="2"/>
+      <text x="145" y="294" fill="#D44040" font-size="8" text-anchor="middle" font-weight="600">BSR</text>
+      <text x="145" y="265" fill="#D44040" font-size="9" text-anchor="middle">сейчас 5/10</text>
+
+      <!-- BSR target -->
+      <circle cx="220" cy="180" r="22" fill="rgba(201,164,76,0.3)" stroke="#C9A44C" stroke-width="2.5"/>
+      <text x="220" y="175" fill="#C9A44C" font-size="9" text-anchor="middle" font-weight="700">BSR</text>
+      <text x="220" y="190" fill="#C9A44C" font-size="8" text-anchor="middle">цель 7/10</text>
+
+      <!-- Arrow BSR current -> target -->
+      <line x1="155" y1="278" x2="208" y2="195" stroke="#C9A44C" stroke-width="1.5" stroke-dasharray="4" marker-end="url(#arrowGold)"/>
+      <defs><marker id="arrowGold" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#C9A44C"/></marker></defs>
+
+      <!-- Checko/Rusprofile -->
+      <circle cx="200" cy="390" r="14" fill="rgba(74,143,224,0.2)" stroke="#4A8FE0"/>
+      <text x="200" y="394" fill="#4A8FE0" font-size="7" text-anchor="middle">Checko</text>
+
+      <!-- СБИС -->
+      <circle cx="280" cy="360" r="14" fill="rgba(74,143,224,0.2)" stroke="#4A8FE0"/>
+      <text x="280" y="364" fill="#4A8FE0" font-size="7" text-anchor="middle">СБИС</text>
+
+      <!-- AI.Инсайт -->
+      <circle cx="330" cy="280" r="16" fill="rgba(232,145,58,0.3)" stroke="#E8913A" stroke-width="2"/>
+      <text x="330" y="275" fill="#E8913A" font-size="8" text-anchor="middle">AI.</text>
+      <text x="330" y="288" fill="#E8913A" font-size="7" text-anchor="middle">Инсайт</text>
+
+      <!-- Контур.Фокус -->
+      <circle cx="370" cy="330" r="15" fill="rgba(74,143,224,0.2)" stroke="#4A8FE0"/>
+      <text x="370" y="326" fill="#4A8FE0" font-size="7" text-anchor="middle">Контур</text>
+      <text x="370" y="338" fill="#4A8FE0" font-size="7" text-anchor="middle">Фокус</text>
+
+      <!-- СПАРК -->
+      <circle cx="450" cy="300" r="16" fill="rgba(74,143,224,0.3)" stroke="#4A8FE0"/>
+      <text x="450" y="304" fill="#4A8FE0" font-size="8" text-anchor="middle">СПАРК</text>
+
+      <!-- Средние агентства -->
+      <circle cx="430" cy="200" r="20" fill="rgba(139,92,246,0.2)" stroke="#8B5CF6"/>
+      <text x="430" y="196" fill="#8B5CF6" font-size="8" text-anchor="middle">MegaRes</text>
+      <text x="430" y="208" fill="#8B5CF6" font-size="7" text-anchor="middle">IndexBox</text>
+
+      <!-- Data Insight -->
+      <circle cx="520" cy="160" r="16" fill="rgba(139,92,246,0.3)" stroke="#8B5CF6"/>
+      <text x="520" y="156" fill="#8B5CF6" font-size="7" text-anchor="middle">Data</text>
+      <text x="520" y="168" fill="#8B5CF6" font-size="7" text-anchor="middle">Insight</text>
+
+      <!-- НАФИ -->
+      <circle cx="560" cy="130" r="15" fill="rgba(139,92,246,0.3)" stroke="#8B5CF6"/>
+      <text x="560" y="134" fill="#8B5CF6" font-size="8" text-anchor="middle">НАФИ</text>
+
+      <!-- Strategy Partners -->
+      <circle cx="680" cy="80" r="18" fill="rgba(212,64,64,0.2)" stroke="#D44040"/>
+      <text x="680" y="76" fill="#D44040" font-size="7" text-anchor="middle">Strategy</text>
+      <text x="680" y="88" fill="#D44040" font-size="7" text-anchor="middle">Partners</text>
+
+      <!-- Яков и Партнёры -->
+      <circle cx="740" cy="55" r="18" fill="rgba(212,64,64,0.2)" stroke="#D44040"/>
+      <text x="740" y="51" fill="#D44040" font-size="7" text-anchor="middle">Яков и</text>
+      <text x="740" y="63" fill="#D44040" font-size="7" text-anchor="middle">Партн.</text>
+
+      <!-- Б1/Kept -->
+      <circle cx="700" cy="120" r="16" fill="rgba(212,64,64,0.2)" stroke="#D44040"/>
+      <text x="700" y="116" fill="#D44040" font-size="7" text-anchor="middle">Б1</text>
+      <text x="700" y="128" fill="#D44040" font-size="7" text-anchor="middle">Kept</text>
+
+      <!-- Legend -->
+      <rect x="580" y="380" width="185" height="75" rx="8" fill="rgba(26,22,32,0.9)" stroke="#2D2735"/>
+      <circle cx="595" cy="396" r="5" fill="#D44040"/>
+      <text x="607" y="400" fill="#9B95A3" font-size="9">Консалтинг (премиум)</text>
+      <circle cx="595" cy="416" r="5" fill="#8B5CF6"/>
+      <text x="607" y="420" fill="#9B95A3" font-size="9">Исследовательские</text>
+      <circle cx="595" cy="436" r="5" fill="#4A8FE0"/>
+      <text x="607" y="440" fill="#9B95A3" font-size="9">ИАС / SaaS</text>
+      <circle cx="700" cy="396" r="5" fill="#C9A44C"/>
+      <text x="712" y="400" fill="#C9A44C" font-size="9" font-weight="600">BSR</text>
+    </svg>
+  </div>
+</section>
+
+<!-- XI. ROADMAP -->
+<section id="roadmap">
+  <h2>XI. Стратегический Roadmap BSR</h2>
+  <p class="section-desc">ТОП-5 приоритетов для выхода на рынок</p>
+
+  <div class="roadmap">
+    <div class="roadmap-item">
+      <div class="roadmap-num">1</div>
+      <div class="roadmap-content">
+        <h4>Качество данных: 5/10 → 7/10</h4>
+        <p>Подключить СБИС API, API Rusprofile. Разделить «данные» (из API/scraping) и «анализ» (LLM). Верификация каждого факта по 2+ источникам. Снижение галлюцинаций. Метрика: AI Board score 7.0+ стабильно.</p>
+      </div>
+    </div>
+    <div class="roadmap-item">
+      <div class="roadmap-num">2</div>
+      <div class="roadmap-content">
+        <h4>Первые 10 платящих клиентов</h4>
+        <p>Ручной outreach к 20-30 предпринимателям. Ценовой тест: 3K / 7K / 15K руб. Сбор обратной связи по 5 вопросам. Метрика: 10 платящих за 2 месяца, NPS > 30.</p>
+      </div>
+    </div>
+    <div class="roadmap-item">
+      <div class="roadmap-num">3</div>
+      <div class="roadmap-content">
+        <h4>Мониторинг конкурентов (подписка)</h4>
+        <p>Ежемесячный дайджест: изменения финансов, новые вакансии, digital-активность. Telegram-бот + email. Цена: 2-5K руб./мес. Метрика: retention > 60% через 3 месяца.</p>
+      </div>
+    </div>
+    <div class="roadmap-item">
+      <div class="roadmap-num">4</div>
+      <div class="roadmap-content">
+        <h4>API и B2B-интеграции</h4>
+        <p>API для банковского скоринга. Виджет для 1С/Битрикс24. White-label для консалтинговых фирм. Метрика: 1 B2B-контракт с MRR > 50K руб.</p>
+      </div>
+    </div>
+    <div class="roadmap-item">
+      <div class="roadmap-num">5</div>
+      <div class="roadmap-content">
+        <h4>Найм ключевого человека</h4>
+        <p>Technical co-founder (AI/ML), или Growth-маркетолог, или отраслевой эксперт-аналитик. Метрика: 1 человек в команде за 3 месяца.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- XII. СОВЕТ ДИРЕКТОРОВ -->
+<section id="board">
+  <h2>XII. Оценка совета директоров</h2>
+  <p class="section-desc">AI-эксперты оценивают данный конкурентный анализ</p>
+
+  <div class="board-grid">
+    <div class="board-card">
+      <div class="role">CFO — Финансовый директор</div>
+      <div class="score" style="color:var(--green);">8/10</div>
+      <div class="comment">
+        <strong>Сильно:</strong> TAM/SAM/SOM рассчитаны с формулами и источниками (RAEX, Минфин — уровень A). Unit economics BSR vs агентства — убедительна. Финансы Big4 верифицированы.<br><br>
+        <strong>Доработать:</strong> SOM 50-100 млн — слишком широкий диапазон. Нужны 3 сценария (пессимистичный, базовый, оптимистичный). Нет анализа burn rate и runway BSR.
+      </div>
+    </div>
+    <div class="board-card">
+      <div class="role">CMO — Маркетинговый директор</div>
+      <div class="score" style="color:var(--green);">8/10</div>
+      <div class="comment">
+        <strong>Сильно:</strong> 62 компании — исчерпывающий список. Перцептуальная карта показывает пустое пространство. Каналы продвижения конкурентов описаны конкретно. Целевые сегменты с willingness-to-pay.<br><br>
+        <strong>Доработать:</strong> Нет конкретного плана запуска (первые 30 дней). Нет анализа SEO-запросов (семантика для контент-стратегии).
+      </div>
+    </div>
+    <div class="board-card">
+      <div class="role">CTO — Технический директор</div>
+      <div class="score" style="color:var(--green);">9/10</div>
+      <div class="comment">
+        <strong>Сильно:</strong> Отличный обзор AI-платформ мира и РФ. AlphaSense ($4B+), Hebbia, Crayon — правильные бенчмарки. Таблица источников данных с API — практически готовый техническое задание. Вывод о BSR как единственном продукте на пересечении AI + российские реестры — корректен.<br><br>
+        <strong>Доработать:</strong> Нет анализа скорости развития AI.Инсайт (Контур) — главный потенциальный конкурент.
+      </div>
+    </div>
+    <div class="board-card">
+      <div class="role">CPO — Продуктовый директор</div>
+      <div class="score" style="color:var(--green);">8/10</div>
+      <div class="comment">
+        <strong>Сильно:</strong> Боли клиентов описаны точно и с привязкой к решению BSR. User journey показывает, где BSR ломает цикл. Анализ форматов отчётов — HTML как незанятая ниша — инсайтфул.<br><br>
+        <strong>Доработать:</strong> Нет прототипа pricing page. Нет A/B тестов заголовков/позиционирования. Нужны цитаты реальных пользователей.
+      </div>
+    </div>
+    <div class="board-card">
+      <div class="role">Отраслевой эксперт</div>
+      <div class="score" style="color:var(--blue);">7/10</div>
+      <div class="comment">
+        <strong>Сильно:</strong> Тренд «бесплатный отчёт → экспертность → заказы» описан точно — так работают Data Insight и НАФИ. Анализ ухода Big4 корректен. Стратегический консалтинг +39% — верный сигнал.<br><br>
+        <strong>Доработать:</strong> Не хватает оценки регуляторных рисков (ФЗ-152, закон об AI). Нет анализа конкуренции с бесплатными отчётами (Data Insight и РБК публикуют много бесплатно). Важно: BSR выходит на зрелый рынок — доверие строится годами.
+      </div>
+    </div>
+    <div class="board-card">
+      <div class="role">Скептик</div>
+      <div class="score" style="color:var(--blue);">7/10</div>
+      <div class="comment">
+        <strong>Сильно:</strong> Честно указаны слабости (качество 5/10, галлюцинации, 1 человек). Calc-trace используется. Источники указаны для каждой таблицы.<br><br>
+        <strong>Критика:</strong> (1) «0 прямых аналогов» — AI.Инсайт Контура уже близок, и у него экосистема + данные. (2) SOM 50-100 млн за 2-3 года — откуда? Нет обоснования конверсии. (3) Часть выручек исследовательских компаний — ОЦЕНКА без источников. (4) Roadmap реалистичен для команды из 3+ человек, но не для 1 человека.
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="border-color:var(--gold);">
+    <h3 style="color:var(--gold);">Средняя оценка совета директоров: 7.8 / 10</h3>
+    <p style="color:var(--text-muted);margin-top:8px;">
+      <strong>Вердикт:</strong> Качественный конкурентный анализ с хорошей структурой и прозрачностью данных. 62 компании — наиболее полная карта рынка. Перцептуальная карта убедительно показывает пустое пространство для BSR. Основные замечания: (1) углубить анализ AI.Инсайт как ближайшего конкурента, (2) добавить 3 сценария SOM, (3) конкретизировать план первых 30 дней.
+    </p>
+  </div>
+</section>
+
+<!-- XIII. ГЛОССАРИЙ -->
+<section id="glossary">
+  <h2>XIII. Глоссарий</h2>
+  <div class="glossary-grid">
+    <div class="glossary-item"><dt>TAM</dt><dd>Total Addressable Market — общий объём рынка, максимально возможная выручка</dd></div>
+    <div class="glossary-item"><dt>SAM</dt><dd>Serviceable Addressable Market — доступный объём рынка, сегменты, которые BSR может обслуживать</dd></div>
+    <div class="glossary-item"><dt>SOM</dt><dd>Serviceable Obtainable Market — реально достижимая доля рынка за 2-3 года</dd></div>
+    <div class="glossary-item"><dt>CAC</dt><dd>Customer Acquisition Cost — стоимость привлечения одного клиента</dd></div>
+    <div class="glossary-item"><dt>LTV</dt><dd>Lifetime Value — совокупная выручка с одного клиента за всё время</dd></div>
+    <div class="glossary-item"><dt>NPS</dt><dd>Net Promoter Score — индекс лояльности клиентов (-100 до +100)</dd></div>
+    <div class="glossary-item"><dt>MRR</dt><dd>Monthly Recurring Revenue — ежемесячная регулярная выручка</dd></div>
+    <div class="glossary-item"><dt>DD</dt><dd>Due Diligence — комплексная проверка бизнеса перед сделкой (M&A, инвестиции)</dd></div>
+    <div class="glossary-item"><dt>Big4</dt><dd>Четыре крупнейших аудиторских фирмы: Deloitte, PwC, EY, KPMG (в РФ: ДРТ, ТеДо, Б1, Kept)</dd></div>
+    <div class="glossary-item"><dt>Big3</dt><dd>Три крупнейших стратегических консалтинга: McKinsey, BCG, Bain</dd></div>
+    <div class="glossary-item"><dt>RAEX</dt><dd>Рейтинговое агентство, составляющее рэнкинги аудиторских и консалтинговых компаний</dd></div>
+    <div class="glossary-item"><dt>ОИРОМ</dt><dd>Объединение исследователей рынка и общественного мнения</dd></div>
+    <div class="glossary-item"><dt>ИАС</dt><dd>Информационно-аналитическая система (СПАРК, Контур.Фокус и т.д.)</dd></div>
+    <div class="glossary-item"><dt>Calc-trace</dt><dd>Протокол прозрачности: формула + входные данные + источник + уровень достоверности</dd></div>
+    <div class="glossary-item"><dt>ФАКТ / РАСЧЁТ / ОЦЕНКА</dt><dd>Уровни достоверности данных: из первоисточника / вычислено по формуле / с допущениями</dd></div>
+    <div class="glossary-item"><dt>CI</dt><dd>Competitive Intelligence — конкурентная разведка</dd></div>
+    <div class="glossary-item"><dt>BI</dt><dd>Business Intelligence — бизнес-аналитика и визуализация данных</dd></div>
+    <div class="glossary-item"><dt>РАМУ</dt><dd>Российская ассоциация маркетинговых услуг</dd></div>
+  </div>
+</section>
+
+<!-- XIV. МЕТОДОЛОГИЯ -->
+<section id="methodology">
+  <h2>XIV. Методология</h2>
+  <div class="card">
+    <h4>Сбор данных</h4>
+    <p style="color:var(--text-muted);">6 параллельных AI-агентов, каждый с доступом к WebSearch. Блоки: SEO-аналитик (62 компании), CPO+CTO (продукт+технологии), CMO+CGO (маркетинг+коммерция), CFO (финансы), CHRO+COO (HR+операции), Стратег (SWOT+roadmap). Общее время сбора: ~7 минут.</p>
+
+    <h4>Источники (80+)</h4>
+    <p style="color:var(--text-muted);">Уровень A: RAEX рэнкинг 2025, Минфин РФ, ФНС, ЕГРЮЛ. Уровень B: Коммерсант, РБК, Ведомости, Forbes. Уровень C: ОИРОМ, Гильдия Маркетологов, AdIndex, Sostav. Уровень D: hh.ru, GeekLink, DreamJob, TAdviser. Уровень E: сайты компаний.</p>
+
+    <h4>Верификация</h4>
+    <p style="color:var(--text-muted);">Каждый факт помечен уровнем достоверности (ФАКТ/РАСЧЁТ/ОЦЕНКА). Финансовые данные Big4 верифицированы по RAEX + раскрытие информации (2 источника). Объём рынка — RAEX + Минфин + ОИРОМ (3 источника). Зарплаты — hh.ru + отраслевые обзоры (2 источника).</p>
+
+    <h4>Ограничения</h4>
+    <p style="color:var(--text-muted);">Выручка большинства исследовательских компаний (ООО) — оценочная, не подтверждена ФНС. SOM для BSR — модельный расчёт без рыночной валидации. Данные по AI.Инсайт (Контур) ограничены — продукт в раннем доступе.</p>
+
+    <h4>Дата сбора данных</h4>
+    <p style="color:var(--text-muted);">5 марта 2026. Финансовые данные — по итогам 2024 года (последние доступные).</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>Конкурентный анализ рынка маркетинговой аналитики и бизнес-аудитов в России</p>
+    <p>Подготовлено: BSR (Анализ бизнеса 360) | 5 марта 2026</p>
+    <p>6 AI-агентов | 62 компании | 80+ источников | Время генерации: ~7 мин</p>
+  </div>
+</footer>
+
+</body>
+</html>

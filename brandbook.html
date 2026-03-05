@@ -3,1151 +3,484 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BSR Брендбук — Руководство по бренду 2026</title>
+<title>BSR — Brand Identity Guidelines</title>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
 :root {
-  /* PRIMARY */
   --gold: #C9A44C;
   --gold-light: #E8C76A;
   --gold-dark: #A68535;
-  --gradient-gold: linear-gradient(135deg, #C9A44C, #E8C76A);
-  /* BACKGROUNDS */
   --bg: #0D0B0E;
-  --bg-elevated: #13101A;
-  --card: #1A1620;
-  --card-hover: #221D2A;
-  /* SEMANTIC */
-  --green: #3DB86A;
-  --green-bg: rgba(61,184,106,0.12);
-  --red: #D44040;
-  --red-bg: rgba(212,64,64,0.12);
-  --blue: #4A8FE0;
-  --blue-bg: rgba(74,143,224,0.10);
-  --orange: #E8913A;
-  --orange-bg: rgba(232,145,58,0.12);
-  --purple: #8B5CF6;
-  --purple-bg: rgba(139,92,246,0.12);
-  /* TEXT */
+  --bg2: #111015;
+  --card: #18151D;
+  --card2: #1E1A26;
   --text: #E8E4ED;
   --text-muted: #9B95A3;
   --text-dim: #6B6575;
-  /* BORDER */
-  --border: #2D2735;
-  --border-light: #3D3548;
-  /* SPACING */
-  --sp-xs: 4px; --sp-sm: 8px; --sp-md: 16px; --sp-lg: 24px; --sp-xl: 32px; --sp-2xl: 48px; --sp-3xl: 64px;
-  --radius-sm: 6px; --radius-md: 10px; --radius-lg: 14px; --radius-xl: 20px;
+  --border: #2A2530;
+  --blue: #4A8FE0;
+  --green: #3DB86A;
+  --red: #D44040;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;font-size:15px;}
-.wrap{max-width:1140px;margin:0 auto;padding:0 24px;}
-/* NAV */
-.topnav{position:sticky;top:0;z-index:100;background:rgba(13,11,14,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:10px 0;}
-.topnav .wrap{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;align-items:center;}
-.topnav .brand-mark{font-weight:800;font-size:1rem;background:var(--gradient-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-right:16px;white-space:nowrap;letter-spacing:1px;}
-.topnav a{color:var(--text-muted);text-decoration:none;font-size:0.78rem;padding:5px 10px;border-radius:var(--radius-sm);white-space:nowrap;transition:all .2s;}
-.topnav a:hover{background:var(--card);color:var(--gold);}
-/* HERO */
-.hero{padding:72px 0 48px;text-align:center;background:linear-gradient(180deg,#1A1620 0%,#0D0B0E 100%);border-bottom:1px solid var(--border);}
-.hero h1{font-size:2.6rem;font-weight:800;background:var(--gradient-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px;letter-spacing:-0.5px;}
-.hero .sub{color:var(--text-muted);font-size:1.05rem;max-width:640px;margin:0 auto 24px;}
-.hero .meta{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;font-size:.82rem;color:var(--text-dim);}
-/* SECTION */
-section{padding:var(--sp-3xl) 0;border-bottom:1px solid var(--border);}
-section:last-of-type{border-bottom:none;}
-h2{font-size:1.55rem;font-weight:700;color:var(--gold);margin-bottom:6px;}
-h3{font-size:1.15rem;font-weight:600;color:var(--text);margin:28px 0 10px;}
-h4{font-size:.95rem;font-weight:600;color:var(--text-muted);margin:18px 0 8px;}
-.sdesc{color:var(--text-muted);margin-bottom:24px;font-size:.92rem;}
-/* CARD */
-.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;margin-bottom:16px;transition:border-color .2s;}
-.card:hover{border-color:var(--gold);}
-.card-label{font-size:.72rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);font-weight:700;margin-bottom:10px;}
-/* GRID */
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
-.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
-.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;}
-@media(max-width:900px){.g2,.g3,.g4,.g5{grid-template-columns:1fr;}}
-@media(min-width:601px) and (max-width:900px){.g2{grid-template-columns:1fr 1fr;}.g3,.g4,.g5{grid-template-columns:1fr 1fr;}}
+body{font-family:'Inter',sans-serif;background:#F0EDE8;color:var(--text);-webkit-font-smoothing:antialiased;}
+/* PAGE LAYOUT — мозаика карточек как в Phygital+ */
+.page{max-width:1400px;margin:0 auto;padding:40px 24px;}
+.mosaic{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;}
+.panel{background:var(--bg);border-radius:16px;overflow:hidden;position:relative;}
+/* PANEL SIZES */
+.p-4x3{grid-column:span 4;grid-row:span 1;min-height:280px;padding:32px;}
+.p-3x3{grid-column:span 3;grid-row:span 1;min-height:280px;padding:32px;}
+.p-2x3{grid-column:span 2;grid-row:span 1;min-height:280px;padding:24px;}
+.p-6x3{grid-column:span 6;grid-row:span 1;min-height:280px;padding:32px;}
+.p-4x6{grid-column:span 4;grid-row:span 2;min-height:576px;padding:32px;}
+.p-5x3{grid-column:span 5;grid-row:span 1;min-height:280px;padding:32px;}
+.p-7x3{grid-column:span 7;grid-row:span 1;min-height:280px;padding:32px;}
+.p-12{grid-column:span 12;padding:32px;}
+@media(max-width:1100px){
+  .mosaic{grid-template-columns:repeat(6,1fr);}
+  .p-4x3,.p-3x3,.p-5x3,.p-7x3{grid-column:span 6;}
+  .p-2x3{grid-column:span 3;}
+  .p-6x3{grid-column:span 6;}
+  .p-4x6{grid-column:span 6;grid-row:span 1;min-height:auto;}
+  .p-12{grid-column:span 6;}
+}
+@media(max-width:700px){
+  .mosaic{grid-template-columns:1fr;}
+  .p-4x3,.p-3x3,.p-2x3,.p-6x3,.p-4x6,.p-5x3,.p-7x3,.p-12{grid-column:span 1;grid-row:span 1;min-height:auto;}
+}
+/* TYPOGRAPHY */
+.panel-label{font-size:.65rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-dim);font-weight:600;margin-bottom:20px;}
+h1{font-size:2.2rem;font-weight:800;letter-spacing:-0.5px;}
+h2{font-size:1.3rem;font-weight:700;color:var(--text);margin-bottom:8px;}
+h3{font-size:.95rem;font-weight:600;color:var(--text-muted);margin-bottom:6px;}
+.small{font-size:.78rem;color:var(--text-dim);line-height:1.6;}
+.mono{font-family:'JetBrains Mono',monospace;}
+/* LOGO */
+.logo-main{display:flex;align-items:center;gap:20px;margin-bottom:24px;}
+.logo-icon{width:64px;height:64px;background:var(--card2);border-radius:14px;display:flex;align-items:center;justify-content:center;}
+.logo-text{font-size:3.2rem;font-weight:800;color:var(--gold);letter-spacing:4px;}
+.logo-sub{font-size:.82rem;color:var(--text-muted);letter-spacing:2px;margin-top:2px;}
 /* SWATCH */
-.swatch{border-radius:var(--radius-md);padding:20px 16px;text-align:center;min-height:110px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;border:1px solid var(--border);}
-.swatch .hex{font-family:'JetBrains Mono',monospace;font-size:.82rem;font-weight:600;}
-.swatch .name{font-size:.72rem;text-transform:uppercase;letter-spacing:1px;margin-top:4px;opacity:.8;}
-.swatch .rgb{font-size:.68rem;opacity:.6;margin-top:2px;}
+.swatch-row{display:flex;gap:10px;margin:12px 0;}
+.swatch{flex:1;height:56px;border-radius:10px;display:flex;align-items:flex-end;padding:6px 8px;}
+.swatch span{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--text-dim);}
+.swatch-dark span{color:var(--text-muted);}
 /* TYPE SPECIMEN */
-.type-row{display:flex;align-items:baseline;gap:20px;padding:14px 0;border-bottom:1px solid var(--border);}
-.type-row:last-child{border-bottom:none;}
-.type-label{min-width:90px;font-size:.75rem;color:var(--text-dim);font-family:'JetBrains Mono',monospace;}
-.type-meta{min-width:180px;font-size:.72rem;color:var(--text-muted);font-family:'JetBrains Mono',monospace;}
-.type-sample{flex:1;}
-/* TABLE */
-table{width:100%;border-collapse:collapse;font-size:.85rem;margin:16px 0;}
-th{background:var(--card);color:var(--gold);font-weight:600;text-align:left;padding:10px 14px;border-bottom:2px solid var(--border);}
-td{padding:9px 14px;border-bottom:1px solid var(--border);vertical-align:top;color:var(--text-muted);}
-tr:hover td{background:rgba(201,164,76,0.04);}
-.tw{overflow-x:auto;border-radius:var(--radius-lg);border:1px solid var(--border);}
-/* BADGE */
-.badge{display:inline-block;padding:3px 10px;border-radius:4px;font-size:.72rem;font-weight:700;letter-spacing:.5px;}
-.b-fact{background:var(--green-bg);color:var(--green);}
-.b-calc{background:var(--blue-bg);color:var(--blue);}
-.b-est{background:var(--orange-bg);color:var(--orange);}
-.b-gold{background:rgba(201,164,76,0.15);color:var(--gold);}
-/* QUOTE */
-.quote{background:var(--card);border-left:3px solid var(--gold);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:16px 20px;margin:14px 0;font-style:italic;color:var(--text);font-size:.92rem;}
-.quote .attr{color:var(--gold);font-size:.82rem;margin-top:8px;font-weight:600;font-style:normal;}
-/* DO/DONT */
-.do-dont{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;}
-.do-box,.dont-box{border-radius:var(--radius-lg);padding:20px;font-size:.88rem;}
-.do-box{background:var(--green-bg);border:1px solid rgba(61,184,106,0.25);}
-.dont-box{background:var(--red-bg);border:1px solid rgba(212,64,64,0.25);}
-.do-box .lbl{color:var(--green);font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;}
-.dont-box .lbl{color:var(--red);font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;}
-@media(max-width:700px){.do-dont{grid-template-columns:1fr;}}
-/* COMPONENT DEMO */
-.demo{background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin:16px 0;}
-/* BUTTON */
-.btn{display:inline-block;padding:10px 22px;border-radius:var(--radius-sm);font-size:.85rem;font-weight:600;cursor:pointer;border:none;text-decoration:none;transition:all .2s;}
-.btn-primary{background:var(--gradient-gold);color:#0D0B0E;}
-.btn-primary:hover{filter:brightness(1.12);}
-.btn-secondary{background:transparent;border:1px solid var(--gold);color:var(--gold);}
-.btn-secondary:hover{background:rgba(201,164,76,0.1);}
-.btn-ghost{background:transparent;color:var(--text-muted);border:1px solid var(--border);}
-.btn-ghost:hover{border-color:var(--text-muted);color:var(--text);}
-/* CALC TRACE */
-.calc-trace{background:var(--blue-bg);border:1px solid rgba(74,143,224,0.2);border-radius:var(--radius-sm);padding:14px 18px;margin:10px 0;font-size:.82rem;line-height:1.7;}
-.calc-trace strong{color:var(--blue);}
-.calc-trace .src{color:var(--text-dim);font-size:.75rem;}
-/* ICON ROW */
-.icon-row{display:flex;gap:20px;flex-wrap:wrap;margin:16px 0;}
-.icon-item{display:flex;flex-direction:column;align-items:center;gap:8px;}
-.icon-item svg{width:32px;height:32px;}
-.icon-item span{font-size:.7rem;color:var(--text-dim);}
-/* FOOTER */
-footer{padding:40px 0;text-align:center;color:var(--text-dim);font-size:.8rem;border-top:1px solid var(--border);}
-footer a{color:var(--gold);text-decoration:none;}
-/* LOGO AREA */
-.logo-showcase{display:flex;gap:32px;align-items:center;justify-content:center;flex-wrap:wrap;padding:32px;margin:16px 0;}
-.logo-variant{display:flex;flex-direction:column;align-items:center;gap:12px;}
-.logo-variant span{font-size:.72rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;}
-/* SPACING DEMO */
-.sp-demo{display:flex;gap:8px;align-items:flex-end;margin:16px 0;}
-.sp-block{background:var(--gold);border-radius:3px;opacity:.7;}
-.sp-label{font-size:.68rem;color:var(--text-dim);text-align:center;margin-top:4px;font-family:'JetBrains Mono',monospace;}
-/* VOICE CARD */
-.voice-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:12px;}
-.voice-card .ch{font-size:.72rem;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;}
-.voice-card .ex{font-size:.88rem;color:var(--text);line-height:1.6;}
-/* POSITIONING TABLE */
-.pos-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:12px;}
-.pos-card .vs{font-size:.78rem;color:var(--gold);font-weight:700;margin-bottom:6px;}
-.pos-card .they{color:var(--red);font-size:.85rem;margin-bottom:4px;}
-.pos-card .we{color:var(--green);font-size:.85rem;}
+.type-spec{margin:8px 0;}
+.type-spec .line{display:flex;align-items:baseline;gap:12px;padding:6px 0;border-bottom:1px solid var(--border);}
+.type-spec .line:last-child{border-bottom:none;}
+.type-spec .label{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--text-dim);min-width:100px;}
+.type-spec .sample{flex:1;}
+.type-spec .meta{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--text-dim);min-width:80px;text-align:right;}
+/* BUSINESS CARD */
+.bcard{background:var(--card);border-radius:12px;padding:24px;border:1px solid var(--border);}
+.bcard-name{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:2px;}
+.bcard-title{font-size:.78rem;color:var(--gold);margin-bottom:16px;}
+.bcard-line{font-size:.72rem;color:var(--text-muted);padding:3px 0;display:flex;align-items:center;gap:8px;}
+/* MOCKUP DASHBOARD */
+.dash{background:var(--card);border-radius:12px;padding:20px;border:1px solid var(--border);height:100%;}
+.dash-nav{display:flex;gap:16px;font-size:.7rem;color:var(--text-dim);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.dash-nav span.active{color:var(--gold);font-weight:600;}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;}
+.stat-box{background:var(--bg);border-radius:10px;padding:12px;text-align:center;}
+.stat-val{font-size:1.3rem;font-weight:700;font-family:'JetBrains Mono',monospace;}
+.stat-label{font-size:.62rem;color:var(--text-dim);margin-top:2px;}
+/* LANDING MOCK */
+.landing-mock{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;height:100%;}
+.landing-mock h2{font-size:1.15rem;font-weight:700;color:var(--text);line-height:1.4;margin-bottom:12px;}
+.landing-mock p{font-size:.78rem;color:var(--text-muted);line-height:1.6;max-width:320px;margin-bottom:20px;}
+.cta-btn{display:inline-block;background:linear-gradient(135deg,#C9A44C,#E8C76A);color:#0D0B0E;font-size:.82rem;font-weight:700;padding:12px 28px;border-radius:8px;text-decoration:none;}
+/* LOGO USAGE */
+.logo-variants{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;}
+.logo-var{border-radius:10px;padding:16px;display:flex;align-items:center;justify-content:center;height:60px;}
+.logo-var span{font-size:1.1rem;font-weight:800;letter-spacing:3px;}
+/* CHART MINI */
+.mini-chart{margin-top:12px;}
+.bar-row{display:flex;align-items:center;gap:8px;margin:4px 0;}
+.bar-label{font-size:.62rem;color:var(--text-dim);min-width:50px;text-align:right;}
+.bar{height:14px;border-radius:3px;transition:width .3s;}
+.bar-val{font-size:.6rem;color:var(--text-muted);font-family:'JetBrains Mono',monospace;}
+/* VALUES */
+.values-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;}
+.value-item{background:var(--card2);border-radius:10px;padding:14px;}
+.value-item h4{font-size:.72rem;color:var(--gold);font-weight:700;margin-bottom:4px;}
+.value-item p{font-size:.7rem;color:var(--text-muted);line-height:1.5;}
 </style>
 </head>
 <body>
 
-<nav class="topnav">
-<div class="wrap">
-<div class="brand-mark">BSR БРЕНДБУК</div>
-<a href="#strategy">Стратегия</a>
-<a href="#visual">Визуал</a>
-<a href="#colors">Цвета</a>
-<a href="#type">Типографика</a>
-<a href="#logo">Логотип</a>
-<a href="#components">Компоненты</a>
-<a href="#voice">Голос бренда</a>
-<a href="#positioning">Позиционирование</a>
-</div>
-</nav>
+<div class="page">
+<div class="mosaic">
 
-<header class="hero">
-<div class="wrap">
-<h1>BSR Руководство по бренду</h1>
-<p class="sub">Продакшн-ready брендбук для BSR (Анализ бизнеса 360). Визуальная айдентика, тон коммуникации, UI-компоненты, позиционирование. Версия 1.0 / Март 2026.</p>
-<div class="meta">
-<span>Автор: Крис, CMO</span>
-<span>Версия: 1.0</span>
-<span>Дата: Март 2026</span>
-</div>
-</div>
-</header>
-
-<main class="wrap">
-
-<!-- ===== 1. BRAND STRATEGY ===== -->
-<section id="strategy">
-<h2>I. Стратегия бренда</h2>
-<p class="sdesc">Фундамент. Все решения вытекают отсюда.</p>
-
-<h3>Миссия</h3>
-<div class="card">
-<p style="font-size:1.1rem;font-weight:600;color:var(--text);">Демократизировать бизнес-аналитику для российского МСБ.</p>
-<p style="margin-top:8px;color:var(--text-muted);">Мы верим, что каждый владелец бизнеса заслуживает такой же глубины анализа, какую McKinsey делает для корпораций &mdash; по цене, которая имеет смысл, и со скоростью, которая имеет значение. BSR превращает 90 секунд и 10 тыс. рублей в 360-аудит, который иначе стоил бы 500К+ и недели ожидания.</p>
-</div>
-
-<h3>Видение</h3>
-<div class="card">
-<p style="font-size:1.05rem;color:var(--text);">Стать ответом по умолчанию на вопрос &laquo;Что на самом деле происходит с этим бизнесом?&raquo; в России и СНГ к 2028 году.</p>
-</div>
-
-<h3>Обещание бренда</h3>
-<div class="card" style="border-left:3px solid var(--gold);">
-<p style="font-size:1.1rem;font-weight:600;color:var(--gold);">&laquo;Полная картина. Без слепых зон. 90 секунд.&raquo;</p>
-<p style="margin-top:8px;color:var(--text-muted);">Мы обещаем доставить полный, верифицированный, многоракурсный бизнес-аудит, который аналитик-человек не смог бы подготовить быстрее чем за 2 недели &mdash; за время, пока варится кофе.</p>
-</div>
-
-<h3>Ценности бренда</h3>
-<div class="g3">
-<div class="card">
-<div class="card-label">1. Прозрачность</div>
-<p style="color:var(--text-muted);font-size:.88rem;">У каждого числа есть источник. Каждая оценка промаркирована. Мы показываем свою работу &mdash; calc-trace, бейджи достоверности, иерархии данных. Мы не прячемся за &laquo;магией ИИ&raquo;.</p>
-</div>
-<div class="card">
-<div class="card-label">2. Скорость без компромиссов</div>
-<p style="color:var(--text-muted);font-size:.88rem;">Быстро не значит небрежно. 90 секунд генерации подкреплены 40+ фактчеками, перекрёстной верификацией по 2-3 источникам на каждую точку данных и графом зависимостей, который каскадно исправляет ошибки.</p>
-</div>
-<div class="card">
-<div class="card-label">3. Полнота</div>
-<p style="color:var(--text-muted);font-size:.88rem;">360 значит 360. Финансы + HR + Digital + Конкуренты + Стратегия + Рынок. Не &laquo;вот таблица с выручкой&raquo; как СПАРК. Не &laquo;вот размытое резюме от ChatGPT&raquo;. Полная картина.</p>
-</div>
-<div class="card">
-<div class="card-label">4. Интеллектуальная честность</div>
-<p style="color:var(--text-muted);font-size:.88rem;">Если мы не знаем &mdash; мы так и говорим. Бейджи достоверности (ФАКТ / РАСЧЁТ / ОЦЕНКА) &mdash; это ядро продукта. Мы скорее покажем неопределённость, чем сфальсифицируем точность.</p>
-</div>
-<div class="card">
-<div class="card-label">5. Дизайн как уважение</div>
-<p style="color:var(--text-muted);font-size:.88rem;">Красивые отчёты &mdash; это не тщеславие. Это уважение к времени и интеллекту читателя. Тёмная тема, золотые акценты, inline SVG &mdash; каждая деталь продумана.</p>
-</div>
-</div>
-
-<h3>Личность бренда &mdash; Архетип</h3>
-<div class="card">
-<div class="g2">
-<div>
-<h4 style="color:var(--gold);">Мудрец + Маг</h4>
-<p style="color:var(--text-muted);font-size:.88rem;">Основной архетип: <strong style="color:var(--text);">Мудрец</strong> &mdash; знание, истина, анализ, экспертиза. Мы &mdash; советник, который видит то, что другие упускают.</p>
-<p style="color:var(--text-muted);font-size:.88rem;margin-top:8px;">Вторичный архетип: <strong style="color:var(--text);">Маг</strong> &mdash; трансформация. Мы превращаем сырые данные в стратегический инсайт за 90 секунд. Момент &laquo;как это возможно?&raquo;.</p>
+<!-- ===== ROW 1: LOGO + VARIANTS ===== -->
+<div class="panel p-4x3" style="display:flex;flex-direction:column;justify-content:center;">
+<div class="logo-main">
+<div class="logo-icon">
+<svg width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+<text x="18" y="26" fill="#C9A44C" font-family="Inter,sans-serif" font-size="26" font-weight="800" text-anchor="middle" letter-spacing="1">B</text>
+</svg>
 </div>
 <div>
-<h4 style="color:var(--text-muted);">Черты личности</h4>
-<ul style="list-style:none;color:var(--text-muted);font-size:.88rem;">
-<li style="padding:4px 0;">Уверенный, но не высокомерный</li>
-<li style="padding:4px 0;">Точный, но не педантичный</li>
-<li style="padding:4px 0;">Прямой, но не грубый</li>
-<li style="padding:4px 0;">Изысканный, но не претенциозный</li>
-<li style="padding:4px 0;">Технический, но всегда доступный</li>
+<div class="logo-text">BSR</div>
+</div>
+</div>
+<div style="color:var(--text-muted);font-size:.85rem;letter-spacing:1px;">Business Score Russia</div>
+<div style="color:var(--gold);font-size:.78rem;margin-top:4px;">«Полная картина. 90 секунд.»</div>
+</div>
+
+<!-- LOGO VARIANTS GRID -->
+<div class="panel p-4x3">
+<div class="panel-label">Варианты логотипа</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+<div style="background:var(--card);border-radius:10px;padding:16px;display:flex;align-items:center;justify-content:center;">
+<span style="font-size:1.6rem;font-weight:800;color:var(--gold);letter-spacing:3px;">BSR</span>
+</div>
+<div style="background:var(--card);border-radius:10px;padding:16px;display:flex;align-items:center;justify-content:center;">
+<span style="font-size:1.6rem;font-weight:800;color:var(--text);letter-spacing:3px;">BSR</span>
+</div>
+<div style="background:var(--card);border-radius:10px;padding:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;">
+<span style="font-size:1.2rem;font-weight:800;color:var(--gold);letter-spacing:2px;">BSR</span>
+<span style="font-size:.5rem;color:var(--text-dim);letter-spacing:2px;">BUSINESS SCORE</span>
+</div>
+<div style="background:var(--card);border-radius:10px;padding:16px;display:flex;align-items:center;justify-content:center;">
+<div style="width:40px;height:40px;background:var(--bg);border-radius:10px;display:flex;align-items:center;justify-content:center;">
+<span style="font-size:1.2rem;font-weight:800;color:var(--gold);">B</span>
+</div>
+</div>
+</div>
+</div>
+
+<!-- B ICON -->
+<div class="panel p-2x3" style="display:flex;align-items:center;justify-content:center;">
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<rect width="100" height="100" rx="22" fill="#1E1A26"/>
+<text x="50" y="68" fill="#C9A44C" font-family="Inter,sans-serif" font-size="56" font-weight="800" text-anchor="middle" letter-spacing="1">B</text>
+<rect x="16" y="78" width="68" height="3" rx="1.5" fill="#C9A44C" opacity=".5"/>
+</svg>
+</div>
+
+<!-- BUSINESS CARD -->
+<div class="panel p-2x3" style="display:flex;align-items:center;justify-content:center;">
+<div class="bcard" style="width:100%;">
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+<svg width="20" height="20" viewBox="0 0 20 20"><text x="10" y="15" fill="#C9A44C" font-family="Inter,sans-serif" font-size="14" font-weight="800" text-anchor="middle">B</text></svg>
+<span style="font-size:.7rem;font-weight:700;color:var(--gold);letter-spacing:2px;">BSR</span>
+</div>
+<div class="bcard-name">Иван Иванов</div>
+<div class="bcard-title">Главный Аналитик</div>
+<div class="bcard-line">+7 999 123 45 67</div>
+<div class="bcard-line">ai@bsr.ru</div>
+<div class="bcard-line">bsr.ru</div>
+<div class="bcard-line" style="margin-top:4px;">Москва, Сити, Пресненская наб.</div>
+</div>
+</div>
+
+<!-- ===== ROW 2: LANDING + DASHBOARD ===== -->
+
+<!-- LANDING MOCKUP -->
+<div class="panel p-5x3">
+<div class="landing-mock">
+<div style="font-size:.7rem;font-weight:700;color:var(--gold);letter-spacing:3px;margin-bottom:16px;">BSR</div>
+<h2>Анализ компании за 90 секунд?<br>Реальность с BSR.</h2>
+<p>Получите полную картину бизнеса с проверенными данными и прозрачными источниками. Без галлюцинаций AI и дорогих консультантов.</p>
+<a class="cta-btn" href="#">Попробовать BSR за 10К ₽</a>
+</div>
+</div>
+
+<!-- DASHBOARD MOCKUP -->
+<div class="panel p-7x3" style="padding:16px;">
+<div class="dash">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+<div style="display:flex;align-items:center;gap:8px;">
+<span style="font-size:.72rem;font-weight:800;color:var(--gold);letter-spacing:1px;">BSR</span>
+<div class="dash-nav">
+<span class="active">Анализ</span>
+<span>Мониторинг</span>
+<span>Отчёты</span>
+<span>Профиль</span>
+</div>
+</div>
+<span style="font-size:.65rem;color:var(--text-dim);">AI Иванов</span>
+</div>
+<h2 style="font-size:1.05rem;margin-bottom:4px;">Аналитический Отчёт:<br>ООО «Вектор Развития»</h2>
+<p style="font-size:.68rem;color:var(--text-dim);margin-bottom:14px;">Полная картина за 90 секунд. Данные проверены.</p>
+<div class="stat-row">
+<div class="stat-box">
+<div class="stat-val" style="color:var(--gold);">85.4M ₽</div>
+<div class="stat-label">Выручка (за год)</div>
+<div style="font-size:.55rem;color:var(--green);margin-top:2px;">+12%</div>
+</div>
+<div class="stat-box">
+<div class="stat-val" style="color:var(--green);">18.5%</div>
+<div class="stat-label">Рентабельность (EBITDA)</div>
+</div>
+<div class="stat-box">
+<div class="stat-val" style="color:var(--blue);">4.2 / 10</div>
+<div class="stat-label">Индекс Риска</div>
+</div>
+</div>
+<!-- Mini chart -->
+<div style="display:flex;gap:12px;">
+<div style="flex:1;">
+<div style="font-size:.65rem;color:var(--text-dim);margin-bottom:6px;">Динамика Финансовых Показателей</div>
+<svg width="100%" height="60" viewBox="0 0 300 60" xmlns="http://www.w3.org/2000/svg">
+<polyline points="0,50 40,45 80,42 120,38 160,30 200,22 240,18 280,10" fill="none" stroke="#C9A44C" stroke-width="2"/>
+<polyline points="0,48 40,50 80,46 120,44 160,40 200,35 240,32 280,28" fill="none" stroke="#4A8FE0" stroke-width="1.5" stroke-dasharray="4"/>
+</svg>
+</div>
+<div style="flex:1;">
+<div style="font-size:.65rem;color:var(--text-dim);margin-bottom:8px;">Ключевые Сильные Стороны</div>
+<div style="font-size:.6rem;color:var(--text-muted);line-height:1.7;">
+<div style="display:flex;align-items:center;gap:4px;"><span style="color:var(--green);">●</span> Стабильный рост выручки</div>
+<div style="display:flex;align-items:center;gap:4px;"><span style="color:var(--green);">●</span> Низкая долговая нагрузка</div>
+<div style="display:flex;align-items:center;gap:4px;"><span style="color:var(--green);">●</span> Инновации и управление</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ===== ROW 3: BRAND GUIDELINES PANELS ===== -->
+
+<!-- COVER -->
+<div class="panel p-3x3" style="display:flex;flex-direction:column;justify-content:space-between;">
+<div>
+<svg width="28" height="28" viewBox="0 0 28 28"><text x="14" y="21" fill="#C9A44C" font-family="Inter,sans-serif" font-size="18" font-weight="800" text-anchor="middle">B</text></svg>
+</div>
+<div>
+<div style="font-size:1.1rem;font-weight:800;color:var(--text);margin-bottom:4px;">BSR</div>
+<div style="font-size:.82rem;color:var(--text-muted);margin-bottom:16px;">Brand Identity Guidelines</div>
+<div style="font-size:.72rem;color:var(--gold);">«Полная картина. 90 секунд.»</div>
+</div>
+<div style="display:flex;justify-content:space-between;font-size:.6rem;color:var(--text-dim);">
+<span>Версия 1.0</span>
+<span>2026</span>
+</div>
+</div>
+
+<!-- BRAND PERSONALITY -->
+<div class="panel p-3x3">
+<div class="panel-label">Личность бренда</div>
+<h2>Brand Personality:<br>The Sage + The Magician</h2>
+<p style="font-size:.78rem;color:var(--text-muted);line-height:1.7;margin-top:12px;">Мы — старший аналитик, который видит то, что упускают другие. Уверенный, точный, изысканный, но доступный.</p>
+<p style="font-size:.78rem;color:var(--text-muted);line-height:1.7;margin-top:8px;">Мы превращаем хаос данных в ясную картину, соединяя мудрость и трансформацию.</p>
+</div>
+
+<!-- COLOR PALETTE -->
+<div class="panel p-2x3">
+<div class="panel-label">Цветовая палитра</div>
+<h3>Color Palette</h3>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px;">
+<div style="background:#C9A44C;height:48px;border-radius:8px;"></div>
+<div style="background:#0D0B0E;height:48px;border-radius:8px;border:1px solid var(--border);"></div>
+<div style="background:#1E1A26;height:48px;border-radius:8px;"></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px;">
+<div style="background:#4A8FE0;height:48px;border-radius:8px;"></div>
+<div style="background:#E8E4ED;height:48px;border-radius:8px;"></div>
+<div style="background:#9B95A3;height:48px;border-radius:8px;"></div>
+</div>
+<div style="margin-top:12px;">
+<div style="display:flex;justify-content:space-between;font-size:.58rem;color:var(--text-dim);font-family:'JetBrains Mono',monospace;">
+<span>#C9A44C</span><span>#0D0B0E</span><span>#1E1A26</span>
+</div>
+<div style="display:flex;justify-content:space-between;font-size:.58rem;color:var(--text-dim);font-family:'JetBrains Mono',monospace;margin-top:4px;">
+<span>#4A8FE0</span><span>#E8E4ED</span><span>#9B95A3</span>
+</div>
+</div>
+<div style="font-size:.6rem;color:var(--text-dim);margin-top:12px;">Deep Palette</div>
+</div>
+
+<!-- TYPOGRAPHY -->
+<div class="panel p-2x3">
+<div class="panel-label">Типографика</div>
+<h3>Typography</h3>
+<div style="margin-top:16px;">
+<div style="font-family:'Inter',sans-serif;">
+<div style="font-size:.62rem;color:var(--gold);font-weight:600;margin-bottom:8px;">Inter</div>
+<div style="display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:.62rem;color:var(--text-dim);">
+<span>Inter Extrabold</span><span style="font-family:'JetBrains Mono',monospace;">600–800</span>
+<span>Head Outline</span><span style="font-family:'JetBrains Mono',monospace;">400–500</span>
+<span>H2 / SemiBd</span><span style="font-family:'JetBrains Mono',monospace;">Cap Weight / 1.3</span>
+<span>Hd / Medium</span><span style="font-family:'JetBrains Mono',monospace;">Size / 1.4</span>
+<span>Body</span><span style="font-family:'JetBrains Mono',monospace;">14px / 1.2</span>
+</div>
+</div>
+<div style="margin-top:16px;font-family:'JetBrains Mono',monospace;">
+<div style="font-size:.62rem;color:var(--gold);font-weight:600;margin-bottom:8px;">JetBrains Mono</div>
+<div style="display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:.62rem;color:var(--text-dim);">
+<span>JetBrains Mono</span><span>400–500</span>
+<span>Code Snippets</span><span>14px / 1.6</span>
+<span>Data Points</span><span>14px / 1.2</span>
+</div>
+</div>
+</div>
+</div>
+
+<!-- LOGO USAGE -->
+<div class="panel p-2x3">
+<div class="panel-label">Использование логотипа</div>
+<h3>Logo Usage</h3>
+<div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+<div style="background:var(--card);border-radius:10px;padding:14px;display:flex;align-items:center;justify-content:center;">
+<span style="font-size:1rem;font-weight:800;color:var(--gold);letter-spacing:2px;">BSR</span>
+</div>
+<div style="background:#F0EDE8;border-radius:10px;padding:14px;display:flex;align-items:center;justify-content:center;">
+<span style="font-size:1rem;font-weight:800;color:#0D0B0E;letter-spacing:2px;">BSR</span>
+</div>
+<div style="background:var(--card);border-radius:10px;padding:14px;display:flex;align-items:center;justify-content:center;">
+<div style="width:32px;height:32px;background:var(--bg);border-radius:8px;display:flex;align-items:center;justify-content:center;">
+<span style="font-size:.9rem;font-weight:800;color:var(--gold);">B</span>
+</div>
+</div>
+<div style="background:var(--card);border-radius:10px;padding:14px;display:flex;align-items:center;justify-content:center;">
+<span style="font-size:1rem;font-weight:800;color:var(--text);letter-spacing:2px;">BSR</span>
+</div>
+</div>
+<div style="margin-top:12px;font-size:.6rem;color:var(--text-dim);line-height:1.6;">
+Охранное поле = высота буквы B. Мин. размер: 80px (полный), 24px (фавикон).
+</div>
+</div>
+
+<!-- VISUAL STYLE -->
+<div class="panel p-2x3">
+<div class="panel-label">Визуальный стиль</div>
+<h3>Visual Style</h3>
+<div style="margin-top:16px;display:grid;gap:8px;">
+<div style="background:linear-gradient(135deg,#18151D,#0D0B0E,#1A1225);height:50px;border-radius:10px;"></div>
+<div style="background:var(--card);border-radius:10px;padding:12px;">
+<div style="font-size:.6rem;color:var(--text-dim);margin-bottom:6px;">Только тёмная тема</div>
+<div style="display:flex;gap:6px;">
+<div style="width:28px;height:28px;border-radius:6px;background:#0D0B0E;border:1px solid var(--border);"></div>
+<div style="width:28px;height:28px;border-radius:6px;background:#18151D;"></div>
+<div style="width:28px;height:28px;border-radius:6px;background:#1E1A26;"></div>
+</div>
+</div>
+<div style="font-size:.6rem;color:var(--text-dim);line-height:1.6;">
+Чисто как терминал Bloomberg с хорошей типографикой. Никаких паттернов — насыщенность от данных.
+</div>
+</div>
+</div>
+
+<!-- ===== ROW 4: VALUES + VOICE ===== -->
+
+<!-- BRAND VALUES -->
+<div class="panel p-6x3">
+<div class="panel-label">Ценности бренда</div>
+<div class="values-grid">
+<div class="value-item">
+<h4>Прозрачность</h4>
+<p>У каждого числа есть источник. Каждая оценка промаркирована. Мы не прячемся за «магией ИИ».</p>
+</div>
+<div class="value-item">
+<h4>Скорость без компромиссов</h4>
+<p>90 секунд генерации, 40+ фактчеков, перекрёстная верификация по 2-3 источникам.</p>
+</div>
+<div class="value-item">
+<h4>Полнота</h4>
+<p>360 значит 360. Финансы + HR + Digital + Конкуренты + Стратегия + Рынок.</p>
+</div>
+<div class="value-item">
+<h4>Интеллектуальная честность</h4>
+<p>Если мы не знаем — мы так и говорим. ФАКТ / РАСЧЁТ / ОЦЕНКА — ядро продукта.</p>
+</div>
+<div class="value-item">
+<h4>Дизайн как уважение</h4>
+<p>Красивые отчёты — уважение к времени и интеллекту читателя.</p>
+</div>
+</div>
+</div>
+
+<!-- POSITIONING -->
+<div class="panel p-6x3">
+<div class="panel-label">Позиционирование</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
+<div style="background:var(--card2);border-radius:10px;padding:16px;">
+<div style="font-size:.65rem;color:var(--red);font-weight:600;margin-bottom:6px;">vs СПАРК / Контур</div>
+<p style="font-size:.7rem;color:var(--text-muted);line-height:1.6;">Данные без анализа = шум.<br><span style="color:var(--gold);">BSR = сигнал.</span></p>
+</div>
+<div style="background:var(--card2);border-radius:10px;padding:16px;">
+<div style="font-size:.65rem;color:var(--red);font-weight:600;margin-bottom:6px;">vs ChatGPT</div>
+<p style="font-size:.7rem;color:var(--text-muted);line-height:1.6;">Бесплатный ИИ = фальшивая уверенность.<br><span style="color:var(--gold);">BSR = честный интеллект.</span></p>
+</div>
+<div style="background:var(--card2);border-radius:10px;padding:16px;">
+<div style="font-size:.65rem;color:var(--red);font-weight:600;margin-bottom:6px;">vs Консалтинг</div>
+<p style="font-size:.7rem;color:var(--text-muted);line-height:1.6;">Та же глубина, в 1000x быстрее, в 50x дешевле.<br><span style="color:var(--gold);">Полностью прозрачно.</span></p>
+</div>
+</div>
+<div style="margin-top:16px;padding:16px;background:var(--card2);border-radius:10px;border-left:3px solid var(--gold);">
+<p style="font-size:.78rem;color:var(--text);line-height:1.7;">
+<strong>Для</strong> владельцев МСБ, инвесторов и банков — <strong>BSR</strong> единственный продукт, сочетающий полноту, скорость, прозрачность и доступность. Квадрант «Доступный инсайт» — пуст. Мы его занимаем.
+</p>
+</div>
+</div>
+
+<!-- ===== ROW 5: RULES + CONFIDENCE ===== -->
+
+<!-- BRAND RULES -->
+<div class="panel p-6x3">
+<div class="panel-label">Правила бренда</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+<div>
+<h3 style="color:var(--green);font-size:.72rem;">Правильно</h3>
+<ul style="font-size:.72rem;color:var(--text-muted);line-height:2;list-style:none;margin-top:8px;">
+<li>Только тёмная тема</li>
+<li>Золото = бренд, семантика = зелёный/синий/красный</li>
+<li>Inter + JetBrains Mono, без других шрифтов</li>
+<li>Один HTML-файл, 0 зависимостей</li>
+<li>Русский язык во всём клиентском контенте</li>
+<li>Каждое утверждение подкреплено данными</li>
+<li>Сначала обучаем, потом продаём</li>
+</ul>
+</div>
+<div>
+<h3 style="color:var(--red);font-size:.72rem;">Неправильно</h3>
+<ul style="font-size:.72rem;color:var(--text-muted);line-height:2;list-style:none;margin-top:8px;">
+<li>Светлая тема</li>
+<li>Хайп-слова: «революционный», «уникальный», «лучший»</li>
+<li>Декоративные шрифты или иконочные шрифты</li>
+<li>Внешние зависимости (JS-библиотеки, CDN)</li>
+<li>Чистый белый (#FFF) или чистый чёрный (#000)</li>
+<li>Золото для основного текста</li>
+<li>Навязчивые CTA и фальшивая срочность</li>
 </ul>
 </div>
 </div>
 </div>
 
-<h3>Слоган</h3>
-<div class="card">
-<div style="margin-bottom:16px;">
-<p style="font-size:1.2rem;font-weight:700;color:var(--gold);margin-bottom:4px;">Победитель: &laquo;Полная картина. 90 секунд.&raquo;</p>
-<p style="font-size:.82rem;color:var(--text-muted);">Коротко. Запоминается. Содержит два ключевых дифференциатора: полнота + скорость.</p>
+<!-- CONFIDENCE SYSTEM -->
+<div class="panel p-6x3">
+<div class="panel-label">Система достоверности</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+<div style="background:rgba(61,184,106,0.12);border-radius:10px;padding:16px;border:1px solid rgba(61,184,106,0.2);">
+<div style="font-size:.72rem;font-weight:700;color:var(--green);margin-bottom:6px;">ФАКТ</div>
+<div style="font-size:.68rem;color:var(--text-muted);line-height:1.6;">Прямые данные из ФНС, ЕГРЮЛ, mpstats. Уровень источника A/B.</div>
 </div>
-<h4>Альтернативы (по рейтингу)</h4>
-<table>
-<tr><th>#</th><th>Слоган</th><th>Где использовать</th></tr>
-<tr><td>1</td><td style="color:var(--gold);font-weight:600;">Полная картина. 90 секунд.</td><td>Основной &mdash; везде</td></tr>
-<tr><td>2</td><td style="color:var(--text);">Бизнес-аудит 360, который раньше стоил полмиллиона.</td><td>Лендинг, главный экран</td></tr>
-<tr><td>3</td><td style="color:var(--text);">Видим то, что скрыто в цифрах.</td><td>Брендовые кампании, поэтичный</td></tr>
-<tr><td>4</td><td style="color:var(--text);">Между ChatGPT и McKinsey.</td><td>Инвестор-питч, позиционирование</td></tr>
-<tr><td>5</td><td style="color:var(--text);">Аналитика &mdash; не роскошь.</td><td>Маркетинг для МСБ, соцсети</td></tr>
-</table>
+<div style="background:rgba(74,143,224,0.10);border-radius:10px;padding:16px;border:1px solid rgba(74,143,224,0.2);">
+<div style="font-size:.72rem;font-weight:700;color:var(--blue);margin-bottom:6px;">РАСЧЁТ</div>
+<div style="font-size:.68rem;color:var(--text-muted);line-height:1.6;">Вычислено из фактов по формуле. Формула указана в calc-trace.</div>
 </div>
-
-<h3>Элеватор-питч</h3>
-<div class="g2">
-<div class="card">
-<div class="card-label">30 секунд</div>
-<p style="color:var(--text);font-size:.9rem;">BSR &mdash; это AI-платформа, которая за 90 секунд генерирует полный аудит любого бизнеса в России: финансы, конкуренты, HR, digital, стратегия. То, за что консалтинг берёт 500 тысяч и две недели &mdash; мы делаем за 10 тысяч рублей и полторы минуты. Данные из ФНС, ЕГРЮЛ, маркетплейсов, соцсетей &mdash; верифицированные и прозрачные.</p>
-</div>
-<div class="card">
-<div class="card-label">60 секунд</div>
-<p style="color:var(--text);font-size:.9rem;">Представьте: вы вводите ИНН компании и через 90 секунд получаете HTML-отчёт на 25+ секций. Финансы из ФНС, конкурентный анализ на 8-12 компаний, SWOT, перцептуальная карта, HR-аудит с зарплатами из HH, digital-присутствие, цитаты лидеров отрасли и конкретную стратегию роста. Каждая цифра помечена: факт, расчёт или оценка. Каждый расчёт &mdash; с формулой и источниками.</p>
-<p style="color:var(--text);font-size:.9rem;margin-top:8px;">СПАРК и Контур дают данные. ChatGPT даёт галлюцинации. Консалтинг даёт результат, но за 500K+ и 2-4 недели. BSR &mdash; единственный продукт на российском рынке, который даёт полный AI-аудит 360 с верификацией. Мы занимаем пустое пространство между бесплатным и дорогим.</p>
-</div>
-</div>
-
-<h3>Тон коммуникации</h3>
-<p class="sdesc">BSR говорит как senior-аналитик: уверенно, по делу, с уважением к аудитории. Мы не &laquo;продаём&raquo; &mdash; мы объясняем.</p>
-
-<div class="do-dont">
-<div class="do-box">
-<div class="lbl">Правильно</div>
-<p>&laquo;Выручка выросла на 34% YoY. Основной драйвер &mdash; запуск канала на Ozon в Q2.&raquo;</p>
-<p style="margin-top:8px;">&laquo;Средний чек 8 200 руб. &mdash; это расчёт на основе mpstats (выручка / заказы за 90 дней).&raquo;</p>
-<p style="margin-top:8px;">&laquo;У нас нет данных о частоте B2B-заказов. LTV не рассчитываем &mdash; было бы нечестно.&raquo;</p>
-</div>
-<div class="dont-box">
-<div class="lbl">Неправильно</div>
-<p>&laquo;Наш УНИКАЛЬНЫЙ и ИННОВАЦИОННЫЙ сервис РЕВОЛЮЦИОННО меняет рынок!!!&raquo;</p>
-<p style="margin-top:8px;">&laquo;Лучший бизнес-аудит в мире. Попробуйте прямо сейчас!&raquo;</p>
-<p style="margin-top:8px;">&laquo;AI-магия сделает всё за вас. Просто введите ИНН.&raquo;</p>
-</div>
-</div>
-
-<h4>Система голоса</h4>
-<div class="tw">
-<table>
-<tr><th>Измерение</th><th>Мы &mdash; такие</th><th>Мы НЕ такие</th></tr>
-<tr><td>Уверенность</td><td style="color:var(--green);">Утверждаем, опираясь на данные</td><td style="color:var(--red);">Хвастаемся без оснований</td></tr>
-<tr><td>Сложность</td><td style="color:var(--green);">Понятно + глубоко. Глоссарий для новичков, сырые данные для экспертов</td><td style="color:var(--red);">Упрощённо до примитива или только жаргон</td></tr>
-<tr><td>Теплота</td><td style="color:var(--green);">Профессионально, с уважением</td><td style="color:var(--red);">Холодно, роботично или фальшиво-дружелюбно</td></tr>
-<tr><td>Честность</td><td style="color:var(--green);">Прозрачны в ограничениях</td><td style="color:var(--red);">Скрываем неопределённость за уверенным языком</td></tr>
-<tr><td>Продажи</td><td style="color:var(--green);">Сначала обучаем, потом продаём</td><td style="color:var(--red);">Навязчивые CTA, таймеры обратного отсчёта, фальшивая срочность</td></tr>
-</table>
-</div>
-</section>
-
-<!-- ===== 2. VISUAL IDENTITY ===== -->
-<section id="visual">
-<h2>II. Визуальная айдентика</h2>
-<p class="sdesc">Внешний вид BSR. Тёмный, точный, с золотыми акцентами &mdash; как терминал Bloomberg, спроектированный тем, кому не всё равно на типографику.</p>
-</section>
-
-<!-- LOGO -->
-<section id="logo">
-<h2>III. Логотип</h2>
-<p class="sdesc">Логотип BSR &mdash; это кастомный словесный знак с геометрическим акцентом. Никаких типовых щитов. Никаких градиентов в самом знаке. Логотип должен работать при 16px (фавикон) и 200px (шапка).</p>
-
-<h3>Основной логотип (золото на тёмном)</h3>
-<div class="demo" style="text-align:center;">
-<svg width="280" height="80" viewBox="0 0 280 80" xmlns="http://www.w3.org/2000/svg">
-  <!-- B -->
-  <path d="M20 16h22c8 0 14 3 14 10 0 5-3 8-7 9v.5c5 1 9 5 9 11 0 8-7 12-16 12H20V16zm10 16h10c4 0 7-2 7-5s-3-5-7-5H30v10zm0 18h12c5 0 8-2 8-6s-3-6-8-6H30v12z" fill="#C9A44C"/>
-  <!-- S -->
-  <path d="M72 47c0-5 4-9 8-11l-1-1c-3-3-5-6-5-10 0-6 5-10 13-10 7 0 12 4 12 9h-8c0-2-2-4-4-4s-4 2-4 4c0 3 2 5 5 8l8 9c2-3 3-6 3-9h8c0 5-2 10-5 14l7 8h-10l-3-3c-3 3-7 5-12 5-9 0-14-4-14-11zm9 0c0 3 3 5 6 5 3 0 5-1 7-3l-7-8c-4 2-6 4-6 6z" fill="#C9A44C"/>
-  <!-- R -->
-  <path d="M116 16h22c10 0 16 5 16 14 0 7-4 12-11 13l13 16h-12l-11-15h-7v15h-10V16zm10 22h10c5 0 8-3 8-7s-3-7-8-7h-10v14z" fill="#C9A44C"/>
-  <!-- Accent bar -->
-  <rect x="166" y="56" width="110" height="3" rx="1.5" fill="#C9A44C"/>
-  <!-- Sub text -->
-  <text x="166" y="46" fill="#9B95A3" font-family="Inter,-apple-system,sans-serif" font-size="11" font-weight="500" letter-spacing="3">BUSINESS SCORE</text>
-  <text x="166" y="28" fill="#E8E4ED" font-family="Inter,-apple-system,sans-serif" font-size="11" font-weight="600" letter-spacing="3">ANALYTICS 360</text>
-</svg>
-<p style="font-size:.75rem;color:var(--text-dim);margin-top:12px;">Основной / Золото на тёмном фоне</p>
-</div>
-
-<h3>Варианты логотипа</h3>
-<div class="g3">
-<div class="demo" style="text-align:center;">
-<svg width="160" height="50" viewBox="0 0 160 50" xmlns="http://www.w3.org/2000/svg">
-<text x="10" y="36" fill="#C9A44C" font-family="Inter,-apple-system,sans-serif" font-size="32" font-weight="800" letter-spacing="2">BSR</text>
-<rect x="88" y="32" width="60" height="2.5" rx="1.25" fill="#C9A44C"/>
-</svg>
-<p style="font-size:.7rem;color:var(--text-dim);margin-top:8px;">Компактный / Навигация</p>
-</div>
-<div class="demo" style="text-align:center;background:#F5F3F0;">
-<svg width="160" height="50" viewBox="0 0 160 50" xmlns="http://www.w3.org/2000/svg">
-<text x="10" y="36" fill="#0D0B0E" font-family="Inter,-apple-system,sans-serif" font-size="32" font-weight="800" letter-spacing="2">BSR</text>
-<rect x="88" y="32" width="60" height="2.5" rx="1.25" fill="#A68535"/>
-</svg>
-<p style="font-size:.7rem;color:#6B6575;margin-top:8px;">Светлый фон</p>
-</div>
-<div class="demo" style="text-align:center;">
-<svg width="160" height="50" viewBox="0 0 160 50" xmlns="http://www.w3.org/2000/svg">
-<text x="10" y="36" fill="#E8E4ED" font-family="Inter,-apple-system,sans-serif" font-size="32" font-weight="800" letter-spacing="2">BSR</text>
-<rect x="88" y="32" width="60" height="2.5" rx="1.25" fill="#E8E4ED"/>
-</svg>
-<p style="font-size:.7rem;color:var(--text-dim);margin-top:8px;">Монохромный / Белый</p>
-</div>
-</div>
-
-<h3>Фавикон / Иконка приложения</h3>
-<div class="demo" style="text-align:center;">
-<svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-<rect width="48" height="48" rx="10" fill="#1A1620"/>
-<text x="24" y="33" fill="#C9A44C" font-family="Inter,-apple-system,sans-serif" font-size="22" font-weight="800" text-anchor="middle" letter-spacing="1">B</text>
-<rect x="8" y="38" width="32" height="2" rx="1" fill="#C9A44C" opacity=".6"/>
-</svg>
-<svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style="margin-left:16px;">
-<rect width="48" height="48" rx="10" fill="#C9A44C"/>
-<text x="24" y="33" fill="#0D0B0E" font-family="Inter,-apple-system,sans-serif" font-size="22" font-weight="800" text-anchor="middle" letter-spacing="1">B</text>
-</svg>
-<p style="font-size:.7rem;color:var(--text-dim);margin-top:12px;">Фавикон: &laquo;B&raquo; с акцентной линией. Тёмный и золотой варианты.</p>
-</div>
-
-<h3>Охранное поле и минимальный размер</h3>
-<div class="card">
-<p style="color:var(--text-muted);font-size:.88rem;"><strong style="color:var(--text);">Охранное поле:</strong> Минимальный отступ вокруг логотипа = высота буквы &laquo;B&raquo; со всех сторон. Никакие элементы не должны вторгаться в эту зону.</p>
-<p style="color:var(--text-muted);font-size:.88rem;margin-top:8px;"><strong style="color:var(--text);">Минимальный размер:</strong> Цифровой: 80px по ширине (полный), 24px (фавикон). Печать: 20 мм по ширине (полный).</p>
-</div>
-
-<div class="do-dont">
-<div class="do-box">
-<div class="lbl">Правильно</div>
-<p>Использовать на тёмных фонах (#0D0B0E до #1A1620)</p>
-<p>Золотой вариант на тёмном, тёмный вариант на светлом</p>
-<p>Соблюдать охранное поле</p>
-<p>Использовать предоставленные SVG-файлы &mdash; никогда не перерисовывать</p>
-</div>
-<div class="dont-box">
-<div class="lbl">Неправильно</div>
-<p>Не вращать, не искажать, не добавлять эффекты</p>
-<p>Не менять межбуквенный интервал или пропорции</p>
-<p>Не размещать на пёстрых/фото фонах</p>
-<p>Не добавлять тени или свечение</p>
-<p>Не использовать золотой логотип на светлых фонах</p>
-</div>
-</div>
-</section>
-
-<!-- COLORS -->
-<section id="colors">
-<h2>IV. Цветовая палитра</h2>
-<p class="sdesc">Цвета НЕ декоративны. У каждого цвета есть задача. Золото = бренд. Зелёный = позитив/факт. Красный = негатив/предупреждение. Синий = расчёт/инфо. Палитра намеренно сдержанная.</p>
-
-<h3>Основной &mdash; Золото</h3>
-<p style="color:var(--text-muted);font-size:.88rem;margin-bottom:16px;">Золото передаёт: экспертизу, премиальное качество, инсайт. Это цвет знания, извлечённого из сырых данных. НЕ роскошь ради роскоши.</p>
-<div class="g4">
-<div class="swatch" style="background:#A68535;"><span class="hex" style="color:#0D0B0E;">#A68535</span><span class="name" style="color:#0D0B0E;">Тёмное золото</span><span class="rgb" style="color:#0D0B0E;">166, 133, 53</span></div>
-<div class="swatch" style="background:#C9A44C;"><span class="hex" style="color:#0D0B0E;">#C9A44C</span><span class="name" style="color:#0D0B0E;">Основное золото</span><span class="rgb" style="color:#0D0B0E;">201, 164, 76</span></div>
-<div class="swatch" style="background:#E8C76A;"><span class="hex" style="color:#0D0B0E;">#E8C76A</span><span class="name" style="color:#0D0B0E;">Светлое золото</span><span class="rgb" style="color:#0D0B0E;">232, 199, 106</span></div>
-<div class="swatch" style="background:rgba(201,164,76,0.15);border-color:var(--gold);"><span class="hex">#C9A44C/15%</span><span class="name">Золотой тинт</span><span class="rgb">Заливки фонов</span></div>
-</div>
-
-<h3>Палитра фонов</h3>
-<div class="g5">
-<div class="swatch" style="background:#0D0B0E;"><span class="hex">#0D0B0E</span><span class="name">Основной</span><span class="rgb">13, 11, 14</span></div>
-<div class="swatch" style="background:#13101A;"><span class="hex">#13101A</span><span class="name">Приподнятый</span><span class="rgb">19, 16, 26</span></div>
-<div class="swatch" style="background:#1A1620;"><span class="hex">#1A1620</span><span class="name">Карточка</span><span class="rgb">26, 22, 32</span></div>
-<div class="swatch" style="background:#221D2A;"><span class="hex">#221D2A</span><span class="name">Ховер</span><span class="rgb">34, 29, 42</span></div>
-<div class="swatch" style="background:#2D2735;"><span class="hex">#2D2735</span><span class="name">Граница</span><span class="rgb">45, 39, 53</span></div>
-</div>
-
-<h3>Иерархия текста</h3>
-<div class="g4">
-<div class="swatch" style="background:#E8E4ED;"><span class="hex" style="color:#0D0B0E;">#E8E4ED</span><span class="name" style="color:#0D0B0E;">Основной текст</span><span class="rgb" style="color:#0D0B0E;">232, 228, 237</span></div>
-<div class="swatch" style="background:#9B95A3;"><span class="hex" style="color:#0D0B0E;">#9B95A3</span><span class="name" style="color:#0D0B0E;">Приглушённый</span><span class="rgb" style="color:#0D0B0E;">155, 149, 163</span></div>
-<div class="swatch" style="background:#6B6575;"><span class="hex" style="color:#0D0B0E;">#6B6575</span><span class="name" style="color:#0D0B0E;">Тусклый</span><span class="rgb" style="color:#0D0B0E;">107, 101, 117</span></div>
-<div class="swatch" style="background:#3D3548;"><span class="hex">#3D3548</span><span class="name">Неактивный</span><span class="rgb">61, 53, 72</span></div>
-</div>
-
-<h3>Семантические цвета</h3>
-<div class="g5">
-<div class="swatch" style="background:#3DB86A;"><span class="hex" style="color:#0D0B0E;">#3DB86A</span><span class="name" style="color:#0D0B0E;">Успех / Факт</span><span class="rgb" style="color:#0D0B0E;">61, 184, 106</span></div>
-<div class="swatch" style="background:#4A8FE0;"><span class="hex" style="color:#0D0B0E;">#4A8FE0</span><span class="name" style="color:#0D0B0E;">Инфо / Расчёт</span><span class="rgb" style="color:#0D0B0E;">74, 143, 224</span></div>
-<div class="swatch" style="background:#E8913A;"><span class="hex" style="color:#0D0B0E;">#E8913A</span><span class="name" style="color:#0D0B0E;">Внимание / Оценка</span><span class="rgb" style="color:#0D0B0E;">232, 145, 58</span></div>
-<div class="swatch" style="background:#D44040;"><span class="hex" style="color:#0D0B0E;">#D44040</span><span class="name" style="color:#0D0B0E;">Ошибка / Опасность</span><span class="rgb" style="color:#0D0B0E;">212, 64, 64</span></div>
-<div class="swatch" style="background:#8B5CF6;"><span class="hex" style="color:#0D0B0E;">#8B5CF6</span><span class="name" style="color:#0D0B0E;">Акцент / Крупный</span><span class="rgb" style="color:#0D0B0E;">139, 92, 246</span></div>
-</div>
-
-<h3>Семантические тинты (для фонов)</h3>
-<div class="g5">
-<div class="swatch" style="background:rgba(61,184,106,0.12);"><span class="hex">#3DB86A/12%</span><span class="name">Фон успеха</span></div>
-<div class="swatch" style="background:rgba(74,143,224,0.10);"><span class="hex">#4A8FE0/10%</span><span class="name">Фон инфо</span></div>
-<div class="swatch" style="background:rgba(232,145,58,0.12);"><span class="hex">#E8913A/12%</span><span class="name">Фон внимания</span></div>
-<div class="swatch" style="background:rgba(212,64,64,0.12);"><span class="hex">#D44040/12%</span><span class="name">Фон ошибки</span></div>
-<div class="swatch" style="background:rgba(139,92,246,0.12);"><span class="hex">#8B5CF6/12%</span><span class="name">Фон акцента</span></div>
-</div>
-
-<h3>CSS-переменные (копировать)</h3>
-<div class="demo">
-<pre style="font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--text-muted);line-height:1.8;overflow-x:auto;">:root {
-  /* Бренд */
-  --gold: #C9A44C;
-  --gold-light: #E8C76A;
-  --gold-dark: #A68535;
-  --gradient-gold: linear-gradient(135deg, #C9A44C, #E8C76A);
-
-  /* Фоны */
-  --bg: #0D0B0E;
-  --bg-elevated: #13101A;
-  --card: #1A1620;
-  --card-hover: #221D2A;
-
-  /* Текст */
-  --text: #E8E4ED;
-  --text-muted: #9B95A3;
-  --text-dim: #6B6575;
-
-  /* Границы */
-  --border: #2D2735;
-  --border-light: #3D3548;
-
-  /* Семантика */
-  --green: #3DB86A;
-  --blue: #4A8FE0;
-  --orange: #E8913A;
-  --red: #D44040;
-  --purple: #8B5CF6;
-}</pre>
-</div>
-
-<h3>Правила использования цветов</h3>
-<div class="do-dont">
-<div class="do-box">
-<div class="lbl">Правильно</div>
-<p>Золото ТОЛЬКО для: элементов бренда, заголовков, интерактивных выделений, премиальных бейджей</p>
-<p>Зелёный = подтверждённые факты, позитивные метрики, рост</p>
-<p>Синий = расчётные значения, инфо-блоки, ссылки</p>
-<p>Оранжевый = оценки, предупреждения, осторожно</p>
-<p>Красный = ошибки, негативные метрики, падение</p>
-</div>
-<div class="dont-box">
-<div class="lbl">Неправильно</div>
-<p>Никогда не используйте золото для основного текста</p>
-<p>Никогда не используйте красный для неотрицательной информации</p>
-<p>Не более 2 семантических цветов в одной карточке</p>
-<p>Никогда не используйте чистый белый (#FFF) &mdash; только --text (#E8E4ED)</p>
-<p>Никогда не используйте чистый чёрный (#000) &mdash; только --bg (#0D0B0E)</p>
-</div>
-</div>
-</section>
-
-<!-- TYPOGRAPHY -->
-<section id="type">
-<h2>V. Типографика</h2>
-<p class="sdesc">Типографика &mdash; это где живёт доверие. Inter за его чёткость и широкий диапазон начертаний. JetBrains Mono для данных. Никаких декоративных шрифтов.</p>
-
-<h3>Шрифтовой стек</h3>
-<div class="g2">
-<div class="card">
-<div class="card-label">Основной &mdash; Inter</div>
-<p style="font-size:1.4rem;font-weight:700;color:var(--text);margin-bottom:8px;">Inter Variable</p>
-<p style="color:var(--text-muted);font-size:.85rem;">Заголовки, основной текст, UI-элементы. Начертания: 400 (Regular), 500 (Medium), 600 (Semibold), 700 (Bold), 800 (Extrabold).</p>
-<p style="color:var(--text-dim);font-size:.78rem;margin-top:8px;font-family:'JetBrains Mono',monospace;">font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;</p>
-</div>
-<div class="card">
-<div class="card-label">Моноширинный &mdash; JetBrains Mono</div>
-<p style="font-size:1.4rem;font-weight:700;color:var(--text);font-family:'JetBrains Mono',monospace;margin-bottom:8px;">JetBrains Mono</p>
-<p style="color:var(--text-muted);font-size:.85rem;">Код, значения данных, calc-trace, HEX-коды, формулы. Начертания: 400, 500, 700.</p>
-<p style="color:var(--text-dim);font-size:.78rem;margin-top:8px;font-family:'JetBrains Mono',monospace;">font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;</p>
-</div>
-</div>
-
-<h3>Шкала типографики</h3>
-<div class="card" style="padding:0;">
-<div class="type-row">
-<div class="type-label">H1</div>
-<div class="type-meta">2.4rem / 800<br>LH 1.2 / LS -0.5px</div>
-<div class="type-sample" style="font-size:2.4rem;font-weight:800;letter-spacing:-0.5px;line-height:1.2;background:var(--gradient-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Полная картина</div>
-</div>
-<div class="type-row">
-<div class="type-label">H2</div>
-<div class="type-meta">1.55rem / 700<br>LH 1.3 / LS 0</div>
-<div class="type-sample" style="font-size:1.55rem;font-weight:700;line-height:1.3;color:var(--gold);">Конкурентный анализ</div>
-</div>
-<div class="type-row">
-<div class="type-label">H3</div>
-<div class="type-meta">1.15rem / 600<br>LH 1.4 / LS 0</div>
-<div class="type-sample" style="font-size:1.15rem;font-weight:600;line-height:1.4;">Финансовые показатели</div>
-</div>
-<div class="type-row">
-<div class="type-label">H4</div>
-<div class="type-meta">0.95rem / 600<br>LH 1.4 / LS 0</div>
-<div class="type-sample" style="font-size:.95rem;font-weight:600;line-height:1.4;color:var(--text-muted);">Источники данных</div>
-</div>
-<div class="type-row">
-<div class="type-label">Основной</div>
-<div class="type-meta">0.92rem / 400<br>LH 1.6 / LS 0</div>
-<div class="type-sample" style="font-size:.92rem;line-height:1.6;color:var(--text-muted);">Выручка компании за 2025 год составила 142 млн руб., что на 34% выше показателей предыдущего года. Основным драйвером роста стал запуск канала продаж на Ozon.</div>
-</div>
-<div class="type-row">
-<div class="type-label">Мелкий</div>
-<div class="type-meta">0.82rem / 400<br>LH 1.5 / LS 0</div>
-<div class="type-sample" style="font-size:.82rem;line-height:1.5;color:var(--text-muted);">Источник: ФНС, данные за 2024 г.</div>
-</div>
-<div class="type-row">
-<div class="type-label">Подпись</div>
-<div class="type-meta">0.72rem / 600<br>LH 1.4 / LS 1.5px</div>
-<div class="type-sample" style="font-size:.72rem;font-weight:600;line-height:1.4;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);">Метка секции</div>
-</div>
-<div class="type-row">
-<div class="type-label">Моно</div>
-<div class="type-meta">0.82rem / 500<br>LH 1.6 / LS 0</div>
-<div class="type-sample" style="font-size:.82rem;font-weight:500;line-height:1.6;font-family:'JetBrains Mono',monospace;color:var(--blue);">LTV = avg_order * freq * tenure = 42500 * 4 * 0.5 = 85000</div>
-</div>
-<div class="type-row">
-<div class="type-label">Стат-число</div>
-<div class="type-meta">2.0rem / 700<br>LH 1.1 / LS 0</div>
-<div class="type-sample" style="font-size:2rem;font-weight:700;line-height:1.1;background:var(--gradient-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">142 млн</div>
-</div>
-</div>
-
-<h3>Правила типографики</h3>
-<div class="do-dont">
-<div class="do-box">
-<div class="lbl">Правильно</div>
-<p>H1: золотой градиент, всегда</p>
-<p>H2: сплошное золото (#C9A44C)</p>
-<p>H3: основной цвет текста</p>
-<p>Основной текст: приглушённый для удобства чтения</p>
-<p>Числа/данные: JetBrains Mono</p>
-<p>Метки: прописные, межбуквенный 1.5px, начертание 600</p>
-</div>
-<div class="dont-box">
-<div class="lbl">Неправильно</div>
-<p>Не более 2 шрифтовых семейств</p>
-<p>Не использовать начертание ниже 400</p>
-<p>Не ставить межстрочный интервал основного текста ниже 1.5</p>
-<p>Не использовать ВСЕ ПРОПИСНЫЕ для предложений (только метки)</p>
-<p>Не выравнивать абзацы по центру</p>
-</div>
-</div>
-</section>
-
-<!-- ICONOGRAPHY & SPACING -->
-<section>
-<h2>VI. Иконография и отступы</h2>
-
-<h3>Стиль иконок</h3>
-<div class="card">
-<p style="color:var(--text-muted);font-size:.88rem;margin-bottom:16px;">BSR использует <strong style="color:var(--text);">иконки в стиле контура</strong> с толщиной обводки 1.5px. Все иконки &mdash; inline SVG, без зависимостей от иконочных шрифтов. Цвет наследуется от контекста (золотой для бренда, приглушённый для второстепенных, семантический для статусов).</p>
-<div class="icon-row">
-<div class="icon-item">
-<svg viewBox="0 0 24 24" fill="none" stroke="#C9A44C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
-<span>Аналитика</span>
-</div>
-<div class="icon-item">
-<svg viewBox="0 0 24 24" fill="none" stroke="#C9A44C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-<span>Поиск</span>
-</div>
-<div class="icon-item">
-<svg viewBox="0 0 24 24" fill="none" stroke="#C9A44C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
-<span>Верификация</span>
-</div>
-<div class="icon-item">
-<svg viewBox="0 0 24 24" fill="none" stroke="#C9A44C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>
-<span>Внимание</span>
-</div>
-<div class="icon-item">
-<svg viewBox="0 0 24 24" fill="none" stroke="#C9A44C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
-<span>Отчёт</span>
-</div>
-<div class="icon-item">
-<svg viewBox="0 0 24 24" fill="none" stroke="#C9A44C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-<span>Конкуренты</span>
-</div>
-<div class="icon-item">
-<svg viewBox="0 0 24 24" fill="none" stroke="#C9A44C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-<span>Финансы</span>
-</div>
-<div class="icon-item">
-<svg viewBox="0 0 24 24" fill="none" stroke="#C9A44C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-<span>Тренды</span>
-</div>
-</div>
-</div>
-
-<h4>Размеры иконок</h4>
-<div class="tw">
-<table>
-<tr><th>Размер</th><th>Пиксели</th><th>Где использовать</th></tr>
-<tr><td>XS</td><td>16px</td><td>В строке с мелким текстом, ячейки таблиц</td></tr>
-<tr><td>SM</td><td>20px</td><td>Навигация, бейджи</td></tr>
-<tr><td>MD</td><td>24px</td><td>Стандартный UI, кнопки</td></tr>
-<tr><td>LG</td><td>32px</td><td>Карточки фич, стат-карточки</td></tr>
-<tr><td>XL</td><td>48px</td><td>Хиро-секции, пустые состояния</td></tr>
-</table>
-</div>
-
-<h3>Система отступов</h3>
-<p style="color:var(--text-muted);font-size:.88rem;margin-bottom:16px;">Базовая сетка 8px. Все отступы кратны 4px.</p>
-<div class="demo">
-<div class="sp-demo">
-<div style="text-align:center;"><div class="sp-block" style="width:20px;height:4px;"></div><div class="sp-label">4 xs</div></div>
-<div style="text-align:center;"><div class="sp-block" style="width:20px;height:8px;"></div><div class="sp-label">8 sm</div></div>
-<div style="text-align:center;"><div class="sp-block" style="width:20px;height:16px;"></div><div class="sp-label">16 md</div></div>
-<div style="text-align:center;"><div class="sp-block" style="width:20px;height:24px;"></div><div class="sp-label">24 lg</div></div>
-<div style="text-align:center;"><div class="sp-block" style="width:20px;height:32px;"></div><div class="sp-label">32 xl</div></div>
-<div style="text-align:center;"><div class="sp-block" style="width:20px;height:48px;"></div><div class="sp-label">48 2xl</div></div>
-<div style="text-align:center;"><div class="sp-block" style="width:20px;height:64px;"></div><div class="sp-label">64 3xl</div></div>
-</div>
-</div>
-
-<h4>Скругление углов</h4>
-<div class="demo">
-<div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;">
-<div style="text-align:center;"><div style="width:60px;height:40px;background:var(--gold);opacity:.5;border-radius:6px;"></div><div class="sp-label" style="margin-top:6px;">6 sm</div></div>
-<div style="text-align:center;"><div style="width:60px;height:40px;background:var(--gold);opacity:.5;border-radius:10px;"></div><div class="sp-label" style="margin-top:6px;">10 md</div></div>
-<div style="text-align:center;"><div style="width:60px;height:40px;background:var(--gold);opacity:.5;border-radius:14px;"></div><div class="sp-label" style="margin-top:6px;">14 lg</div></div>
-<div style="text-align:center;"><div style="width:60px;height:40px;background:var(--gold);opacity:.5;border-radius:20px;"></div><div class="sp-label" style="margin-top:6px;">20 xl</div></div>
-<div style="text-align:center;"><div style="width:40px;height:40px;background:var(--gold);opacity:.5;border-radius:50%;"></div><div class="sp-label" style="margin-top:6px;">50% круг</div></div>
-</div>
-</div>
-
-<h4>Сетка</h4>
-<div class="card">
-<p style="color:var(--text-muted);font-size:.88rem;"><strong style="color:var(--text);">Макс. ширина:</strong> 1140px. <strong style="color:var(--text);">Отступы:</strong> 24px (десктоп), 16px (мобильный). <strong style="color:var(--text);">Колонки:</strong> Гибкая сетка (auto-fit, minmax). Типовые: 2 колонки для сравнения, 3 для значений, 4 для статистики, 5 для палитры. Зазор: 16px стандартный, 12px компактный.</p>
+<div style="background:rgba(232,145,58,0.12);border-radius:10px;padding:16px;border:1px solid rgba(232,145,58,0.2);">
+<div style="font-size:.72rem;font-weight:700;color:#E8913A;margin-bottom:6px;">ОЦЕНКА</div>
+<div style="font-size:.68rem;color:var(--text-muted);line-height:1.6;">Содержит допущения. Каждое допущение явно указано.</div>
 </div>
-</section>
-
-<!-- COMPONENTS -->
-<section id="components">
-<h2>VII. UI-компоненты</h2>
-<p class="sdesc">Готовые к продакшну компоненты для HTML-отчётов BSR. Каждый компонент здесь &mdash; живой, рабочий пример.</p>
-
-<h3>Карточки</h3>
-<div class="g2">
-<div class="card">
-<div class="card-label">Стандартная карточка</div>
-<p style="color:var(--text-muted);font-size:.88rem;">Фон: --card. Граница: 1px --border. Скругление: 14px. Отступ: 24px. Ховер: граница становится золотой.</p>
-</div>
-<div class="card" style="border-left:3px solid var(--gold);">
-<div class="card-label">Акцентная карточка</div>
-<p style="color:var(--text-muted);font-size:.88rem;">Как стандартная + левая граница-акцент. Для ключевых выводов, обещания бренда, важных цитат.</p>
-</div>
-</div>
-
-<h3>Стат-карточки</h3>
-<div class="g4">
-<div class="card" style="text-align:center;padding:20px;">
-<div style="font-size:2rem;font-weight:700;background:var(--gradient-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">142М</div>
-<div style="font-size:.82rem;color:var(--text-muted);margin-top:4px;">Выручка, 2025</div>
-<div style="font-size:.72rem;color:var(--text-dim);margin-top:2px;">+34% к году</div>
-</div>
-<div class="card" style="text-align:center;padding:20px;">
-<div style="font-size:2rem;font-weight:700;color:var(--green);">87%</div>
-<div style="font-size:.82rem;color:var(--text-muted);margin-top:4px;">Удержание клиентов</div>
-</div>
-<div class="card" style="text-align:center;padding:20px;">
-<div style="font-size:2rem;font-weight:700;color:var(--blue);">90с</div>
-<div style="font-size:.82rem;color:var(--text-muted);margin-top:4px;">Генерация отчёта</div>
-</div>
-<div class="card" style="text-align:center;padding:20px;">
-<div style="font-size:2rem;font-weight:700;color:var(--orange);">~8,2К</div>
-<div style="font-size:.82rem;color:var(--text-muted);margin-top:4px;">Средний чек (оценка)</div>
-</div>
-</div>
-
-<h3>Бейджи достоверности</h3>
-<div class="demo">
-<p style="margin-bottom:12px;color:var(--text-muted);font-size:.88rem;">Каждое число в отчёте BSR помечено уровнем достоверности:</p>
-<div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
-<span class="badge b-fact">ФАКТ</span>
-<span class="badge b-calc">РАСЧЁТ</span>
-<span class="badge b-est">ОЦЕНКА</span>
-</div>
-<div class="tw">
-<table>
-<tr><th>Бейдж</th><th>Цвет</th><th>Значение</th><th>Пример</th></tr>
-<tr><td><span class="badge b-fact">ФАКТ</span></td><td style="color:var(--green);">Зелёный #3DB86A</td><td>Прямые данные из источника уровня A/B</td><td>Выручка из ФНС: 142 млн руб.</td></tr>
-<tr><td><span class="badge b-calc">РАСЧЁТ</span></td><td style="color:var(--blue);">Синий #4A8FE0</td><td>Рассчитано из фактов, формула указана</td><td>Доля рынка = выручка / TAM</td></tr>
-<tr><td><span class="badge b-est">ОЦЕНКА</span></td><td style="color:var(--orange);">Оранжевый #E8913A</td><td>Содержит допущения, каждое указано</td><td>LTV по отраслевому бенчмарку</td></tr>
-</table>
-</div>
-</div>
-
-<h3>Блок calc-trace</h3>
-<div class="demo">
-<div class="calc-trace">
-<strong>LTV B2B = 85 000 руб.</strong><br>
-Формула: средний_заказ x частота x срок<br>
-Данные: 42 500 руб. x 4 раза/год x 0.5 года<br>
-<span class="src">Источники: средний заказ &mdash; mpstats (РАСЧЁТ), частота &mdash; отраслевой бенчмарк (ОЦЕНКА)</span><br>
-Достоверность: <span class="badge b-est">ОЦЕНКА</span>
-</div>
-</div>
-
-<h3>Таблицы</h3>
-<div class="demo">
-<div class="tw">
-<table>
-<tr><th>Компания</th><th>Выручка</th><th>Маржа</th><th>Стадия</th><th>Достоверность</th></tr>
-<tr><td style="color:var(--text);font-weight:500;">BSR</td><td>12М</td><td style="color:var(--green);">+18%</td><td><span class="badge b-gold">Рост</span></td><td><span class="badge b-fact">ФАКТ</span></td></tr>
-<tr><td style="color:var(--text);font-weight:500;">Конкурент А</td><td>85М</td><td style="color:var(--green);">+12%</td><td><span class="badge b-gold">Зрелость</span></td><td><span class="badge b-fact">ФАКТ</span></td></tr>
-<tr><td style="color:var(--text);font-weight:500;">Конкурент Б</td><td>~45М</td><td style="color:var(--red);">-3%</td><td><span class="badge b-gold">Инвестиции</span></td><td><span class="badge b-est">ОЦЕНКА</span></td></tr>
-</table>
-</div>
-</div>
-
-<h3>Кнопки</h3>
-<div class="demo">
-<div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
-<a class="btn btn-primary" href="#">Сгенерировать отчёт</a>
-<a class="btn btn-secondary" href="#">Посмотреть пример</a>
-<a class="btn btn-ghost" href="#">Документация</a>
-</div>
-<div style="margin-top:16px;">
-<div class="tw">
-<table>
-<tr><th>Тип</th><th>Фон</th><th>Граница</th><th>Текст</th><th>Применение</th></tr>
-<tr><td>Основная</td><td>Золотой градиент</td><td>Нет</td><td>#0D0B0E</td><td>Главный CTA (1 на экран)</td></tr>
-<tr><td>Вторичная</td><td>Прозрачный</td><td>1px золото</td><td>Золотой</td><td>Второстепенные действия</td></tr>
-<tr><td>Призрачная</td><td>Прозрачный</td><td>1px граница</td><td>Приглушённый</td><td>Третичные, навигация</td></tr>
-</table>
-</div>
-</div>
-</div>
-
-<h3>Цитаты</h3>
-<div class="demo">
-<div class="quote">
-&laquo;AI-аналитика &mdash; это не про замену аналитиков. Это про то, чтобы дать каждому владельцу МСБ доступ к тому уровню инсайтов, который раньше был только у корпораций.&raquo;
-<div class="attr">&mdash; Отраслевой эксперт, Forbes Russia, 2025</div>
-</div>
-</div>
-
-<h3>Панель навигации</h3>
-<div class="demo">
-<div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-md);padding:10px 16px;display:flex;gap:6px;overflow-x:auto;align-items:center;">
-<span style="font-weight:800;font-size:.88rem;background:var(--gradient-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-right:12px;letter-spacing:1px;">BSR</span>
-<a href="#" style="color:var(--text-muted);text-decoration:none;font-size:.78rem;padding:5px 10px;border-radius:6px;">Резюме</a>
-<a href="#" style="color:var(--gold);text-decoration:none;font-size:.78rem;padding:5px 10px;border-radius:6px;background:var(--card-hover);">Рынок</a>
-<a href="#" style="color:var(--text-muted);text-decoration:none;font-size:.78rem;padding:5px 10px;border-radius:6px;">Конкуренты</a>
-<a href="#" style="color:var(--text-muted);text-decoration:none;font-size:.78rem;padding:5px 10px;border-radius:6px;">SWOT</a>
-<a href="#" style="color:var(--text-muted);text-decoration:none;font-size:.78rem;padding:5px 10px;border-radius:6px;">Стратегия</a>
-</div>
-<p style="font-size:.78rem;color:var(--text-dim);margin-top:10px;">Липкая, с размытием фона, скроллится на мобильном. Активный пункт: золотой текст + фон ховера.</p>
-</div>
-
-<h3>SWOT-карточки</h3>
-<div class="demo">
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-<div style="background:var(--card);border-radius:12px;padding:18px;border:1px solid var(--border);border-left:4px solid var(--green);">
-<h4 style="color:var(--green);margin:0 0 8px;">Сильные стороны</h4>
-<p style="font-size:.85rem;color:var(--text-muted);">Уникальный 360-аудит. Скорость 90 сек. Прозрачные calc-trace.</p>
-</div>
-<div style="background:var(--card);border-radius:12px;padding:18px;border:1px solid var(--border);border-left:4px solid var(--red);">
-<h4 style="color:var(--red);margin:0 0 8px;">Слабые стороны</h4>
-<p style="font-size:.85rem;color:var(--text-muted);">Нет узнаваемости бренда. Маленькая команда. Стоимость LLM на отчёт.</p>
-</div>
-<div style="background:var(--card);border-radius:12px;padding:18px;border:1px solid var(--border);border-left:4px solid var(--blue);">
-<h4 style="color:var(--blue);margin:0 0 8px;">Возможности</h4>
-<p style="font-size:.85rem;color:var(--text-muted);">6 млн МСБ в России. Нет AI-аудит конкурента. Партнёрства с банками.</p>
-</div>
-<div style="background:var(--card);border-radius:12px;padding:18px;border:1px solid var(--border);border-left:4px solid var(--orange);">
-<h4 style="color:var(--orange);margin:0 0 8px;">Угрозы</h4>
-<p style="font-size:.85rem;color:var(--text-muted);">СПАРК/Контур могут добавить AI-слой. Изменение цен LLM API.</p>
-</div>
-</div>
-</div>
-
-<h3>Стиль SVG-графиков</h3>
-<div class="demo">
-<p style="color:var(--text-muted);font-size:.85rem;margin-bottom:16px;">Все графики &mdash; inline SVG. Без внешних библиотек. Тёмный фон, золотой основной, семантические цвета для серий данных.</p>
-<svg width="100%" height="200" viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
-<!-- Сетка -->
-<line x1="50" y1="20" x2="50" y2="170" stroke="#2D2735" stroke-width="1"/>
-<line x1="50" y1="170" x2="480" y2="170" stroke="#2D2735" stroke-width="1"/>
-<line x1="50" y1="95" x2="480" y2="95" stroke="#2D2735" stroke-width="0.5" stroke-dasharray="4"/>
-<line x1="50" y1="20" x2="480" y2="20" stroke="#2D2735" stroke-width="0.5" stroke-dasharray="4"/>
-<!-- Подписи -->
-<text x="40" y="174" fill="#6B6575" font-size="10" text-anchor="end">0</text>
-<text x="40" y="99" fill="#6B6575" font-size="10" text-anchor="end">50</text>
-<text x="40" y="24" fill="#6B6575" font-size="10" text-anchor="end">100</text>
-<!-- Столбцы -->
-<rect x="80" y="50" width="50" height="120" rx="4" fill="#C9A44C" opacity="0.85"/>
-<rect x="160" y="80" width="50" height="90" rx="4" fill="#4A8FE0" opacity="0.85"/>
-<rect x="240" y="100" width="50" height="70" rx="4" fill="#3DB86A" opacity="0.85"/>
-<rect x="320" y="120" width="50" height="50" rx="4" fill="#8B5CF6" opacity="0.85"/>
-<rect x="400" y="140" width="50" height="30" rx="4" fill="#E8913A" opacity="0.85"/>
-<!-- Подписи столбцов -->
-<text x="105" y="188" fill="#9B95A3" font-size="10" text-anchor="middle">BSR</text>
-<text x="185" y="188" fill="#9B95A3" font-size="10" text-anchor="middle">СПАРК</text>
-<text x="265" y="188" fill="#9B95A3" font-size="10" text-anchor="middle">Контур</text>
-<text x="345" y="188" fill="#9B95A3" font-size="10" text-anchor="middle">ChatGPT</text>
-<text x="425" y="188" fill="#9B95A3" font-size="10" text-anchor="middle">Консалт.</text>
-<!-- Значения -->
-<text x="105" y="44" fill="#C9A44C" font-size="11" font-weight="600" text-anchor="middle">80</text>
-<text x="185" y="74" fill="#4A8FE0" font-size="11" font-weight="600" text-anchor="middle">60</text>
-<text x="265" y="94" fill="#3DB86A" font-size="11" font-weight="600" text-anchor="middle">47</text>
-<text x="345" y="114" fill="#8B5CF6" font-size="11" font-weight="600" text-anchor="middle">33</text>
-<text x="425" y="134" fill="#E8913A" font-size="11" font-weight="600" text-anchor="middle">20</text>
-</svg>
-<p style="font-size:.75rem;color:var(--text-dim);text-align:center;">Пример: Балл полноты (0-100) среди конкурентов. Золотой = BSR всегда.</p>
-</div>
-
-<h4>Правила графиков</h4>
-<div class="tw">
-<table>
-<tr><th>Правило</th><th>Спецификация</th></tr>
-<tr><td>Точка данных BSR</td><td>Всегда золотой (#C9A44C)</td></tr>
-<tr><td>Линии сетки</td><td>--border (#2D2735), 0.5px, пунктир</td></tr>
-<tr><td>Линии осей</td><td>--border, 1px, сплошная</td></tr>
-<tr><td>Подписи</td><td>--text-muted, 10-11px</td></tr>
-<tr><td>Значения на столбцах/точках</td><td>Соответствующий семантический цвет, 11px, полужирный</td></tr>
-<tr><td>Скругление столбцов</td><td>4px (закруглённый верх)</td></tr>
-<tr><td>Прозрачность столбцов</td><td>0.85 (позволяет тонкое наложение)</td></tr>
-<tr><td>Фон</td><td>Прозрачный (наследует фон карточки/демо)</td></tr>
-</table>
-</div>
-</section>
-
-<!-- VOICE EXAMPLES -->
-<section id="voice">
-<h2>VIII. Примеры голоса бренда</h2>
-<p class="sdesc">Как BSR звучит в каждом канале. Копируйте паттерны, а не точные слова.</p>
-
-<h3>Лендинг &mdash; Главный экран</h3>
-<div class="voice-card">
-<div class="ch">Лендинг / Хиро</div>
-<div class="ex">
-<p style="font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:8px;">Полный аудит бизнеса за 90 секунд</p>
-<p>Введите ИНН &mdash; получите 360-отчёт: финансы, конкуренты, HR, digital, стратегия. Каждая цифра &mdash; с источником. Каждый расчёт &mdash; с формулой. То, что раньше стоило 500K и две недели.</p>
 </div>
+<div style="margin-top:16px;background:rgba(74,143,224,0.06);border:1px solid rgba(74,143,224,0.15);border-radius:10px;padding:14px;font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-muted);line-height:1.8;">
+<strong style="color:var(--blue);">LTV B2B = 85 000 ₽</strong><br>
+Формула: средний_заказ × частота × срок<br>
+Данные: 42 500 ₽ × 4 раза/год × 0.5 года<br>
+<span style="color:var(--text-dim);font-size:.62rem;">Источники: средний заказ — mpstats (РАСЧЁТ), частота — отраслевой бенчмарк (ОЦЕНКА)</span>
 </div>
-
-<h3>Telegram-канал</h3>
-<div class="voice-card">
-<div class="ch">Telegram</div>
-<div class="ex">
-<p><strong style="color:var(--text);">Факт дня:</strong> 73% владельцев МСБ принимают стратегические решения без конкурентного анализа. Не потому что не хотят &mdash; потому что СПАРК даёт таблицы, а не ответы, а консалтинг стоит как полгода аренды.</p>
-<p style="margin-top:8px;">BSR закрывает этот gap. 10K руб. 90 секунд. 25+ секций.</p>
-</div>
-</div>
-
-<h3>Email-рассылка</h3>
-<div class="voice-card">
-<div class="ch">Email</div>
-<div class="ex">
-<p style="color:var(--text);">Тема: Ваш конкурент вырос на 40%. Вы знали?</p>
-<p style="margin-top:8px;">Привет! Мы добавили в BSR отслеживание изменений: теперь можно получать alert, когда у конкурента резко меняется выручка, штат или digital-присутствие. Без ручного мониторинга, без аналитика в штате.</p>
-</div>
-</div>
-
-<h3>Ответ на отзыв</h3>
-<div class="voice-card">
-<div class="ch">Отзыв / Поддержка</div>
-<div class="ex">
-<p style="color:var(--text);">Спасибо за обратную связь! Вы правы &mdash; данные по HR-бенчмаркам можно было детализировать сильнее. Мы уже добавили разбивку зарплат по грейдам и регионам в версии 2.3. Если хотите &mdash; перегенерируем ваш отчёт бесплатно.</p>
-</div>
-</div>
-
-<h3>Заголовки секций отчёта</h3>
-<div class="voice-card">
-<div class="ch">Заголовки отчёта</div>
-<div class="ex">
-<div class="tw">
-<table>
-<tr><th>Секция</th><th>Стиль заголовка</th></tr>
-<tr><td>Резюме</td><td style="color:var(--text);">&laquo;Ключевые выводы: [Компания] на рынке [Отрасль]&raquo;</td></tr>
-<tr><td>Конкуренты</td><td style="color:var(--text);">&laquo;8 прямых конкурентов: кто, сколько и куда растёт&raquo;</td></tr>
-<tr><td>Финансы</td><td style="color:var(--text);">&laquo;Финансы из ФНС: выручка, прибыль, динамика 3 года&raquo;</td></tr>
-<tr><td>SWOT</td><td style="color:var(--text);">&laquo;SWOT: 4 силы, 3 слабости, 5 возможностей&raquo;</td></tr>
-<tr><td>Стратегия</td><td style="color:var(--text);">&laquo;Стратегия роста: 3 направления на 12 месяцев&raquo;</td></tr>
-</table>
-</div>
-<p style="font-size:.82rem;color:var(--text-dim);margin-top:10px;">Паттерн: Тема + конкретные числа. Никогда размыто (&laquo;Интересные находки о рынке&raquo;).</p>
-</div>
-</div>
-</section>
-
-<!-- POSITIONING -->
-<section id="positioning">
-<h2>IX. Позиционирование</h2>
-<p class="sdesc">Где BSR находится на рынке и как мы говорим о конкурентах.</p>
-
-<h3>Позиционирующее заявление</h3>
-<div class="card" style="border-left:3px solid var(--gold);">
-<p style="font-size:1rem;color:var(--text);line-height:1.7;">
-<strong>Для</strong> владельцев российского МСБ (5-100 млн руб. выручки), инвесторов и бизнес-ангелов,<br>
-<strong>Которым</strong> нужно быстро и полностью понять бизнес перед принятием решений,<br>
-<strong>BSR</strong> &mdash; это AI-платформа бизнес-аудита,<br>
-<strong>Которая</strong> генерирует верифицированный 360-отчёт (финансы + HR + digital + конкуренты + стратегия) за 90 секунд,<br>
-<strong>В отличие от</strong> СПАРК/Контур (данные без анализа), ChatGPT (анализ без данных) или консалтинговых фирм (анализ с данными, но 500К+ и недели),<br>
-<strong>BSR</strong> &mdash; единственный продукт, сочетающий полноту, скорость, прозрачность и доступность.
-</p>
-</div>
-
-<h3>Система конкурентных сообщений</h3>
-
-<div class="pos-card">
-<div class="vs">BSR vs СПАРК / Контур.Фокус</div>
-<div class="they" style="margin-bottom:4px;"><strong>Они говорят:</strong> &laquo;У нас все данные.&raquo;</div>
-<div class="we"><strong>Мы говорим:</strong> &laquo;Данные &mdash; это не инсайт. СПАРК даёт 200 страниц таблиц. BSR даёт 25 секций анализа со стратегией, SWOT и конкретными рекомендациями. Те же источники данных + ИИ, который действительно думает.&raquo;</div>
-<div style="margin-top:8px;font-size:.82rem;color:var(--text-dim);">Ключевое сообщение: Данные без анализа = шум. BSR = сигнал.</div>
-</div>
-
-<div class="pos-card">
-<div class="vs">BSR vs Консалтинг (McKinsey, BCG, локальные фирмы)</div>
-<div class="they" style="margin-bottom:4px;"><strong>Они говорят:</strong> &laquo;Вам нужны люди-эксперты.&raquo;</div>
-<div class="we"><strong>Мы говорим:</strong> &laquo;Вам нужна скорость + прозрачность. BSR показывает каждую формулу, каждый источник, каждое допущение. Консультант даёт PDF, где &laquo;как&raquo; спрятано за дневной ставкой. И это занимает 2-4 недели при 500К+. Мы &mdash; 90 секунд за 10К.&raquo;</div>
-<div style="margin-top:8px;font-size:.82rem;color:var(--text-dim);">Ключевое сообщение: Та же глубина, в 1000 раз быстрее, в 50 раз дешевле, полностью прозрачно.</div>
-</div>
-
-<div class="pos-card">
-<div class="vs">BSR vs ChatGPT / Бесплатный ИИ</div>
-<div class="they" style="margin-bottom:4px;"><strong>Они говорят:</strong> &laquo;Просто спроси GPT, это бесплатно.&raquo;</div>
-<div class="we"><strong>Мы говорим:</strong> &laquo;ChatGPT галлюцинирует финансовые данные. Он не проверяет ФНС, не делает перекрёстную верификацию, не маркирует уровни достоверности. BSR берёт реальные данные из 10+ источников, верифицирует каждый факт и показывает, что есть факт, что оценка, а что расчёт.&raquo;</div>
-<div style="margin-top:8px;font-size:.82rem;color:var(--text-dim);">Ключевое сообщение: Бесплатный ИИ = фальшивая уверенность. BSR = честный интеллект.</div>
-</div>
-
-<div class="pos-card">
-<div class="vs">BSR vs AI.Insight / Другие AI-аналитики</div>
-<div class="they" style="margin-bottom:4px;"><strong>Они говорят:</strong> &laquo;Мы тоже используем ИИ.&raquo;</div>
-<div class="we"><strong>Мы говорим:</strong> &laquo;ИИ &mdash; это инструмент, а не продукт. Продукт &mdash; это методология: 11-этапный пайплайн, протокол перекрёстной верификации, граф зависимостей, calc-trace, 25+ секций. Покажите другой российский продукт, который делает полный 360-аудит с прозрачными расчётами.&raquo;</div>
-<div style="margin-top:8px;font-size:.82rem;color:var(--text-dim);">Ключевое сообщение: ИИ &mdash; commodity. Методология &mdash; это ров.</div>
-</div>
-
-<h3>Ключевые сообщения по сегментам</h3>
-<div class="g3">
-<div class="card">
-<div class="card-label">Владельцы МСБ</div>
-<p style="color:var(--text);font-size:.9rem;font-weight:500;margin-bottom:8px;">&laquo;Понимайте свой бизнес как совет директоров корпорации &mdash; без корпоративного бюджета.&raquo;</p>
-<p style="color:var(--text-muted);font-size:.82rem;">Боль: Нет времени/денег на глубокий анализ. Решения по интуиции.</p>
-<p style="color:var(--text-muted);font-size:.82rem;">Крючок: 90 секунд. 10К руб. Полная картина.</p>
-<p style="color:var(--text-muted);font-size:.82rem;">Доказательство: Показать пример отчёта по их отрасли.</p>
-</div>
-<div class="card">
-<div class="card-label">Инвесторы / Ангелы</div>
-<p style="color:var(--text);font-size:.9rem;font-weight:500;margin-bottom:8px;">&laquo;Due diligence, который раньше занимал 2 недели. Теперь: до окончания питч-встречи.&raquo;</p>
-<p style="color:var(--text-muted);font-size:.82rem;">Боль: Слишком много сделок, не хватает времени на полный DD.</p>
-<p style="color:var(--text-muted);font-size:.82rem;">Крючок: Введите ИНН во время питча. Получите полный анализ до вопросов.</p>
-<p style="color:var(--text-muted);font-size:.82rem;">Доказательство: Бейджи достоверности, верификация ФНС, конкурентный ландшафт.</p>
-</div>
-<div class="card">
-<div class="card-label">Банки / Корпорации</div>
-<p style="color:var(--text);font-size:.9rem;font-weight:500;margin-bottom:8px;">&laquo;Автоматизированная оценка рисков с полным аудит-трейлом.&raquo;</p>
-<p style="color:var(--text-muted);font-size:.82rem;">Боль: Ручной андеррайтинг медленный и непоследовательный.</p>
-<p style="color:var(--text-muted);font-size:.82rem;">Крючок: API-интеграция. Единая методология. Каждый расчёт отслеживаем.</p>
-<p style="color:var(--text-muted);font-size:.82rem;">Доказательство: Протокол calc-trace, иерархия источников, таблица фактчека.</p>
-</div>
-</div>
-
-<h3>Перцептуальная карта</h3>
-<div class="demo" style="text-align:center;">
-<svg width="100%" height="400" viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
-<!-- Оси -->
-<line x1="50" y1="200" x2="470" y2="200" stroke="#2D2735" stroke-width="1"/>
-<line x1="260" y1="30" x2="260" y2="370" stroke="#2D2735" stroke-width="1"/>
-<!-- Подписи осей -->
-<text x="470" y="218" fill="#6B6575" font-size="10" text-anchor="end">Полнота ></text>
-<text x="55" y="218" fill="#6B6575" font-size="10">< Только данные</text>
-<text x="260" y="26" fill="#6B6575" font-size="10" text-anchor="middle">Дорого</text>
-<text x="260" y="385" fill="#6B6575" font-size="10" text-anchor="middle">Доступно</text>
-<!-- Подписи квадрантов -->
-<text x="155" y="70" fill="#2D2735" font-size="22" text-anchor="middle" font-weight="700">ДОРОГИЕ</text>
-<text x="155" y="88" fill="#2D2735" font-size="22" text-anchor="middle" font-weight="700">ДАННЫЕ</text>
-<text x="365" y="70" fill="#2D2735" font-size="22" text-anchor="middle" font-weight="700">ДОРОГОЙ</text>
-<text x="365" y="88" fill="#2D2735" font-size="22" text-anchor="middle" font-weight="700">ИНСАЙТ</text>
-<text x="155" y="330" fill="#2D2735" font-size="22" text-anchor="middle" font-weight="700">ДЕШЁВЫЕ</text>
-<text x="155" y="348" fill="#2D2735" font-size="22" text-anchor="middle" font-weight="700">ДАННЫЕ</text>
-<text x="365" y="330" fill="#2D2735" font-size="22" text-anchor="middle" font-weight="700">ДОСТУПНЫЙ</text>
-<text x="365" y="348" fill="#2D2735" font-size="22" text-anchor="middle" font-weight="700">ИНСАЙТ</text>
-<!-- Конкуренты -->
-<circle cx="150" cy="120" r="22" fill="#4A8FE0" opacity="0.25"/>
-<text x="150" y="124" fill="#4A8FE0" font-size="10" text-anchor="middle" font-weight="600">СПАРК</text>
-<circle cx="170" cy="150" r="18" fill="#3DB86A" opacity="0.25"/>
-<text x="170" y="154" fill="#3DB86A" font-size="10" text-anchor="middle" font-weight="600">Контур</text>
-<circle cx="400" cy="90" r="26" fill="#8B5CF6" opacity="0.25"/>
-<text x="400" y="94" fill="#8B5CF6" font-size="10" text-anchor="middle" font-weight="600">McKinsey</text>
-<circle cx="200" cy="310" r="20" fill="#E8913A" opacity="0.25"/>
-<text x="200" y="314" fill="#E8913A" font-size="10" text-anchor="middle" font-weight="600">ChatGPT</text>
-<circle cx="120" cy="290" r="16" fill="#D44040" opacity="0.25"/>
-<text x="120" y="294" fill="#D44040" font-size="9" text-anchor="middle" font-weight="600">Checko</text>
-<!-- BSR -->
-<circle cx="390" cy="280" r="28" fill="#C9A44C" opacity="0.3"/>
-<circle cx="390" cy="280" r="28" fill="none" stroke="#C9A44C" stroke-width="2"/>
-<text x="390" y="284" fill="#C9A44C" font-size="13" text-anchor="middle" font-weight="800">BSR</text>
-<!-- Стрелка к зоне BSR -->
-<text x="390" y="320" fill="#C9A44C" font-size="9" text-anchor="middle" font-weight="500">Голубой океан</text>
-</svg>
-<p style="font-size:.78rem;color:var(--text-dim);margin-top:8px;">BSR занимает квадрант &laquo;Доступно + Полный инсайт&raquo; &mdash; сейчас он пуст.</p>
-</div>
-</section>
-
-<!-- PATTERNS & TEXTURES -->
-<section>
-<h2>X. Паттерны и анимация</h2>
-
-<h3>Фоновый паттерн</h3>
-<div class="card">
-<p style="color:var(--text-muted);font-size:.88rem;">BSR НЕ использует декоративные паттерны. Тёмный фон чистый. Визуальная насыщенность идёт от визуализации данных, а не от декора. Единственный текстурный элемент &mdash; тонкий градиент на хиро-секциях:</p>
-<div class="demo" style="background:linear-gradient(135deg, #1A1620 0%, #0D0B0E 50%, #1A1225 100%);height:80px;border-radius:var(--radius-md);margin-top:12px;">
 </div>
-<p style="font-size:.78rem;color:var(--text-dim);margin-top:8px;font-family:'JetBrains Mono',monospace;">linear-gradient(135deg, #1A1620 0%, #0D0B0E 50%, #1A1225 100%)</p>
-</div>
-
-<h3>Анимация</h3>
-<div class="tw">
-<table>
-<tr><th>Элемент</th><th>Свойство</th><th>Длительность</th><th>Easing</th></tr>
-<tr><td>Ховер карточки</td><td>border-color</td><td>200мс</td><td>ease</td></tr>
-<tr><td>Ховер ссылки навигации</td><td>background, color</td><td>200мс</td><td>ease</td></tr>
-<tr><td>Ховер кнопки</td><td>filter (brightness)</td><td>200мс</td><td>ease</td></tr>
-<tr><td>Прокрутка страницы (навигация)</td><td>scroll-behavior</td><td>smooth</td><td>&mdash;</td></tr>
-</table>
-</div>
-<p style="color:var(--text-muted);font-size:.85rem;margin-top:12px;">Правило: Анимации ТОНКИЕ. Максимум 200мс. Никаких пружинящих эффектов, выезжающих панелей, 3D-спиннеров загрузки. Продукт для работы с данными должен ощущаться стабильным, а не игривым.</p>
-</section>
-
-<!-- BRAND RULES SUMMARY -->
-<section>
-<h2>XI. Сводка правил бренда</h2>
-<p class="sdesc">Незыблемые принципы. Распечатайте. Повесьте на стену.</p>
-
-<div class="g2">
-<div class="card">
-<div class="card-label">Айдентика</div>
-<ol style="color:var(--text-muted);font-size:.88rem;padding-left:20px;line-height:1.8;">
-<li>Только тёмная тема. Светлого режима (пока) нет.</li>
-<li>Золото &mdash; бренд. Зелёный/Синий/Оранжевый/Красный &mdash; семантика. Не менять местами.</li>
-<li>Inter + JetBrains Mono. Других шрифтов нет.</li>
-<li>Логотип: использовать предоставленные SVG. Не перерисовывать.</li>
-<li>Один HTML-файл, ноль внешних зависимостей, всегда.</li>
-</ol>
-</div>
-<div class="card">
-<div class="card-label">Голос</div>
-<ol style="color:var(--text-muted);font-size:.88rem;padding-left:20px;line-height:1.8;" start="6">
-<li>Русский язык во всём клиентском контенте.</li>
-<li>Никаких хайп-слов: &laquo;революционный&raquo;, &laquo;уникальный&raquo;, &laquo;лучший&raquo;, &laquo;инновационный&raquo;.</li>
-<li>Каждое утверждение подкреплено данными или помечено как оценка.</li>
-<li>Сначала обучаем, потом продаём.</li>
-<li>Открыто признаём ограничения.</li>
-</ol>
-</div>
-<div class="card">
-<div class="card-label">Целостность данных</div>
-<ol style="color:var(--text-muted);font-size:.88rem;padding-left:20px;line-height:1.8;" start="11">
-<li>Каждое число получает бейдж достоверности (ФАКТ/РАСЧЁТ/ОЦЕНКА).</li>
-<li>Каждый расчёт получает блок calc-trace.</li>
-<li>Иерархия источников: A (реестры) > B (СМИ) > C (отраслевые) > D (агрегаторы) > E (самоотчёт).</li>
-<li>Минимум 2 независимых источника на факт.</li>
-<li>Если только 1 источник &mdash; пометить.</li>
-</ol>
-</div>
-<div class="card">
-<div class="card-label">Продукт</div>
-<ol style="color:var(--text-muted);font-size:.88rem;padding-left:20px;line-height:1.8;" start="16">
-<li>Отчёты &mdash; самодостаточный HTML. Готов к печати.</li>
-<li>Inline SVG для всех визуализаций. Без библиотек графиков.</li>
-<li>Адаптивная вёрстка. Каждая таблица скроллится.</li>
-<li>Точка данных BSR ВСЕГДА золотая на графиках.</li>
-<li>Секция глоссария обязательна в каждом отчёте.</li>
-</ol>
-</div>
-</div>
-</section>
 
-<!-- DOWNLOADS -->
-<section>
-<h2>XII. Чеклист ассетов</h2>
-<p class="sdesc">Что дизайнеру или разработчику нужно из этого брендбука.</p>
+</div><!-- /mosaic -->
 
-<div class="tw">
-<table>
-<tr><th>Ассет</th><th>Формат</th><th>Статус</th></tr>
-<tr><td>Логотип (основной, золото на тёмном)</td><td>SVG</td><td><span class="badge b-fact">В этом файле</span></td></tr>
-<tr><td>Логотип (компактный)</td><td>SVG</td><td><span class="badge b-fact">В этом файле</span></td></tr>
-<tr><td>Логотип (светлый фон)</td><td>SVG</td><td><span class="badge b-fact">В этом файле</span></td></tr>
-<tr><td>Логотип (монохромный)</td><td>SVG</td><td><span class="badge b-fact">В этом файле</span></td></tr>
-<tr><td>Фавикон</td><td>SVG</td><td><span class="badge b-fact">В этом файле</span></td></tr>
-<tr><td>Цветовая палитра (CSS-переменные)</td><td>CSS</td><td><span class="badge b-fact">В этом файле</span></td></tr>
-<tr><td>Шкала типографики</td><td>CSS</td><td><span class="badge b-fact">В этом файле</span></td></tr>
-<tr><td>Библиотека компонентов</td><td>HTML/CSS</td><td><span class="badge b-fact">В этом файле</span></td></tr>
-<tr><td>Набор иконок (8 базовых)</td><td>SVG</td><td><span class="badge b-fact">В этом файле</span></td></tr>
-<tr><td>Руководство по голосу</td><td>Текст</td><td><span class="badge b-fact">В этом файле</span></td></tr>
-<tr><td>Система позиционирования</td><td>Текст</td><td><span class="badge b-fact">В этом файле</span></td></tr>
-</table>
+<div style="text-align:center;padding:32px 0;font-size:.7rem;color:#999;">
+BSR Brand Identity Guidelines v1.0 — Март 2026 — «Полная картина. 90 секунд.»
 </div>
-</section>
 
-</main>
-
-<footer>
-<div class="wrap">
-<p>BSR Брендбук v1.0 &mdash; Март 2026 &mdash; Разработан Крис, CMO</p>
-<p style="margin-top:6px;">&laquo;Полная картина. 90 секунд.&raquo;</p>
-<p style="margin-top:12px;font-size:.72rem;">Этот документ самодостаточен. Без внешних зависимостей. Тёмная тема. Inline SVG. Как и должно быть у BSR.</p>
-</div>
-</footer>
+</div><!-- /page -->
 
 </body>
 </html>
